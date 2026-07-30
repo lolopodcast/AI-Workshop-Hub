@@ -248,12 +248,12 @@
           "id": "read-analyze-act-safety-gate",
           "published": true,
           "title": {
-            "zh": "AIWF · AI 協作工作流方法論",
-            "en": "AIWF · AI Collaboration Workflow Methodology"
+            "zh": "讀取、分析、行動安全閘門",
+            "en": "Read–Analyze–Act Safety Gate"
           },
           "desc": {
-            "zh": "先辨識合作模式（Assistant／Co-pilot／Agent），再選定產品介面與執行環境，建立可驗收、可控管風險的 Read–Analyze–Act 安全閘門。",
-            "en": "Identify the collaboration mode, product interface, and execution environment in turn — a Read–Analyze–Act safety gate for choosing AI workflows you can verify and control."
+            "zh": "把外部內容當資料、不當命令：辨識 prompt injection、隱藏內容與知識污染，在讀取、分析與行動之間建立可核准、可驗證的安全閘門，附四個互動安全實驗。",
+            "en": "Treat external content as data, not authority — recognize prompt injection, hidden content, and knowledge poisoning, and place verifiable approval gates between reading, analysis, and action. Includes four interactive security labs."
           },
           "url": "https://lolopodcast.github.io/read-analyze-act-safety-gate/",
           "tags": [

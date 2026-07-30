@@ -1,0 +1,32 @@
+{
+  "name": "AI 教學資源總入口 · AI Teaching Resources Hub",
+  "short_name": "AI Hub",
+  "description": "駱世民教授 AI 教學資源總入口：AI 素養、EMI/EML 教學、課程營運與產品實作互動教材集。",
+  "lang": "zh-Hant",
+  "dir": "ltr",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#f4f4f4",
+  "theme_color": "#004030",
+  "categories": ["education", "productivity"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    {
+      "name": "AI 基礎與工具生態 · AI Foundations",
+      "short_name": "AI Foundations",
+      "url": "./#cat-ai-foundations"
+    },
+    {
+      "name": "EMI/EML 工作坊與教學工具 · EMI Tools",
+      "short_name": "EMI Tools",
+      "url": "./#cat-emi-eml"
+    }
+  ]
+}

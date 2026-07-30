@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hub 內容管理 · Catalog Manager</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#004030">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700;900&family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+:root{
+  --green:#004030; --green-2:#0a5a42; --green-3:#0d6e50;
+  --sand:#d8c3a5; --sand-2:#e8dcc8; --sand-3:#fdf3e7;
+  --ink:#0b0b0b; --muted:#52514e; --muted-2:#898781;
+  --bg:#f4f4f4; --surface:#fff; --surface-2:#fcfcfb; --line:#e1e0d9;
+  --ok:#0a6b0a; --warn:#9a6a00; --err:#d03b3b;
+  --serif:"Merriweather",Georgia,serif;
+  --sans:"Inter","Noto Sans TC","Segoe UI",system-ui,sans-serif;
+  --r:12px; --sh:0 2px 5px rgba(0,64,48,.07);
+}
+html[data-theme=dark]{
+  --green:#7fd3b4; --green-2:#5cc4a0; --green-3:#43b58e;
+  --sand-2:#3a352c; --sand-3:#241f18;
+  --ink:#f2f1ec; --muted:#a9a7a0; --muted-2:#8b8983;
+  --bg:#0b0b0b; --surface:#161615; --surface-2:#1d1d1b; --line:#302f2c;
+  --ok:#5fd15f; --warn:#e0aa3a; --err:#f07070;
+  --sh:0 2px 6px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+  font-size:15px;line-height:1.6}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(.9rem,3vw,1.6rem)}
+:focus-visible{outline:3px solid var(--green-3);outline-offset:2px;border-radius:4px}
+
+header{position:sticky;top:0;z-index:50;background:var(--green);color:#fff;box-shadow:var(--sh)}
+html[data-theme=dark] header{background:#10221c;border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;padding-top:.65rem;
+  padding-bottom:.65rem}
+header h1{margin:0;font-family:var(--serif);font-size:1.02rem;font-weight:900;flex:1;
+  min-width:150px}
+header h1 small{display:block;font-family:var(--sans);font-size:.7rem;font-weight:500;
+  color:var(--sand);letter-spacing:.04em}
+.hb{appearance:none;font:inherit;font-size:.82rem;font-weight:700;cursor:pointer;
+  border:1px solid rgba(216,195,165,.5);background:rgba(255,255,255,.1);color:#fff;
+  padding:.42rem .8rem;border-radius:999px}
+.hb:hover{background:rgba(216,195,165,.28)}
+.hb.pri{background:var(--sand);border-color:var(--sand);color:var(--green)}
+.hb.pri:hover{background:#e8d5b8}
+html[data-theme=dark] .hb.pri{color:#10221c}
+
+.note{background:var(--sand-3);border:1px solid var(--sand-2);border-radius:var(--r);
+  padding:.85rem 1rem;margin:1.1rem 0;font-size:.855rem;color:var(--muted)}
+.note b{color:var(--ink)}
+.note ol{margin:.45rem 0 0;padding-left:1.3rem}
+.note li{margin:.2rem 0}
+.note code{background:var(--surface);border:1px solid var(--line);border-radius:5px;
+  padding:.05rem .32rem;font-size:.93em}
+
+main{padding:.4rem 0 4rem}
+details.cat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  margin:0 0 .8rem;box-shadow:var(--sh);overflow:hidden}
+details.cat[open]{border-color:var(--green-3)}
+details.cat>summary{cursor:pointer;padding:.8rem 1rem;display:flex;align-items:center;
+  gap:.6rem;flex-wrap:wrap;font-weight:700;list-style:none}
+details.cat>summary::-webkit-details-marker{display:none}
+details.cat>summary::before{content:"▸";color:var(--green-3);font-size:.9rem;flex:0 0 auto}
+details.cat[open]>summary::before{content:"▾"}
+summary .nm{font-family:var(--serif);font-size:1rem;flex:1;min-width:140px}
+summary .nm em{display:block;font-family:var(--sans);font-style:normal;font-size:.76rem;
+  font-weight:500;color:var(--muted-2)}
+.pill{font-size:.71rem;font-weight:700;padding:.16rem .55rem;border-radius:999px;
+  border:1px solid var(--line);color:var(--muted);white-space:nowrap;background:var(--surface-2)}
+.pill.lk{color:var(--warn);background:var(--sand-3);border-color:var(--sand-2)}
+.pill.off{color:var(--err);border-color:var(--err)}
+.catbody{padding:0 1rem 1rem;border-top:1px solid var(--line)}
+
+.fg{display:grid;gap:.55rem .8rem;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  margin:.9rem 0}
+label.f{display:block;font-size:.74rem;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.06em}
+label.f input,label.f textarea,label.f select{width:100%;font:inherit;font-size:.88rem;
+  margin-top:.22rem;padding:.45rem .6rem;border:1.5px solid var(--line);border-radius:8px;
+  background:var(--surface-2);color:var(--ink);text-transform:none;letter-spacing:0;
+  font-weight:400}
+label.f textarea{min-height:52px;resize:vertical}
+label.f input:focus,label.f textarea:focus,label.f select:focus{border-color:var(--green-3);
+  outline:none;box-shadow:0 0 0 3px rgba(13,110,80,.14)}
+label.f.wide{grid-column:1/-1}
+.ck{display:inline-flex;align-items:center;gap:.4rem;font-size:.83rem;font-weight:600;
+  color:var(--muted);cursor:pointer}
+.ck input{width:17px;height:17px;accent-color:var(--green-3);margin:0}
+
+.items{margin:.6rem 0 0;border-top:1px dashed var(--line);padding-top:.7rem}
+.items h3{margin:0 0 .55rem;font-size:.76rem;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.07em}
+.item{border:1px solid var(--line);border-radius:10px;padding:.6rem .75rem;margin:0 0 .5rem;
+  background:var(--surface-2)}
+.item.hidden-row{opacity:.55;border-style:dashed}
+.itop{display:flex;align-items:center;gap:.45rem;flex-wrap:wrap}
+.itop .t{flex:1;min-width:130px;font-weight:600;font-size:.9rem}
+.itop .t em{display:block;font-style:normal;font-size:.76rem;font-weight:400;
+  color:var(--muted-2)}
+.sb{appearance:none;font:inherit;font-size:.75rem;font-weight:700;cursor:pointer;
+  border:1px solid var(--line);background:var(--surface);color:var(--muted);
+  padding:.24rem .52rem;border-radius:7px;white-space:nowrap}
+.sb:hover{border-color:var(--green-3);color:var(--green)}
+.sb.dz:hover{border-color:var(--err);color:var(--err)}
+.iedit{margin-top:.6rem;padding-top:.55rem;border-top:1px dashed var(--line)}
+.tagpick{display:flex;flex-wrap:wrap;gap:.32rem;margin-top:.25rem}
+.tagpick label{display:inline-flex;align-items:center;gap:.28rem;font-size:.78rem;
+  font-weight:600;color:var(--muted);border:1.5px solid var(--line);border-radius:999px;
+  padding:.2rem .55rem;cursor:pointer;background:var(--surface)}
+.tagpick input{width:14px;height:14px;accent-color:var(--green-3);margin:0}
+.tagpick label:has(input:checked){border-color:var(--green-3);color:var(--green);
+  background:var(--sand-3)}
+
+.rowbtns{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.7rem}
+.bigbtn{appearance:none;font:inherit;font-size:.85rem;font-weight:700;cursor:pointer;
+  border:1.5px solid var(--green-3);background:var(--surface);color:var(--green);
+  padding:.5rem 1rem;border-radius:999px}
+.bigbtn:hover{background:var(--sand-3)}
+.bigbtn.solid{background:var(--green);border-color:var(--green);color:#fff}
+html[data-theme=dark] .bigbtn.solid{color:#0b1a15}
+.bigbtn.solid:hover{background:var(--green-2)}
+
+.lockbox{background:var(--sand-3);border:1px solid var(--sand-2);border-radius:10px;
+  padding:.7rem .85rem;margin:.7rem 0 0}
+.lockbox p{margin:.3rem 0 .55rem;font-size:.8rem;color:var(--muted)}
+.hashout{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.74rem;
+  word-break:break-all;color:var(--green);background:var(--surface);border:1px solid var(--line);
+  border-radius:6px;padding:.4rem .55rem;margin-top:.35rem}
+
+#toast{position:fixed;left:50%;bottom:1.4rem;transform:translate(-50%,150%);z-index:200;
+  background:var(--green);color:#fff;font-size:.87rem;font-weight:600;padding:.65rem 1.2rem;
+  border-radius:999px;box-shadow:0 8px 20px rgba(0,0,0,.25);transition:transform .25s;
+  max-width:90vw;text-align:center}
+#toast.on{transform:translate(-50%,0)}
+html[data-theme=dark] #toast{color:#0b1a15}
+#toast.bad{background:var(--err);color:#fff}
+
+.jsonpane{margin-top:1.4rem}
+.jsonpane textarea{width:100%;min-height:220px;font-family:ui-monospace,Consolas,monospace;
+  font-size:.76rem;line-height:1.5;padding:.7rem;border:1.5px solid var(--line);
+  border-radius:var(--r);background:var(--surface-2);color:var(--ink);resize:vertical}
+@media (max-width:560px){ .fg{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Hub 內容管理<small>Catalog Manager · catalog.json</small></h1>
+    <button class="hb" id="reloadBtn" type="button">重新載入</button>
+    <button class="hb" id="addCatBtn" type="button">＋ 新分類</button>
+    <button class="hb" id="copyBtn" type="button">複製 JSON</button>
+    <button class="hb pri" id="dlBtn" type="button">⤓ 下載 catalog.json</button>
+    <button class="hb" id="themeBtn" type="button" aria-label="theme">◐</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="note">
+    <b>使用方式 · How to use</b>
+    <ol>
+      <li>在下面直接編修：展開分類 → 改文字、拖動順序、勾選「顯示」、新增或刪除項目。</li>
+      <li>改完按右上 <code>⤓ 下載 catalog.json</code>，把下載到的檔案覆蓋 Hub 資料夾裡的
+        <code>catalog.json</code>，再 <code>git add / commit / push</code> 即完成更新。</li>
+      <li>本頁只在您的瀏覽器裡運作，不會自動寫回硬碟——所以<b>務必下載並覆蓋</b>，否則改動不會生效。</li>
+      <li><b>密碼提醒：</b>靜態網站的密碼屬於前端遮蔽，看得懂原始碼的人可繞過。請勿在受密碼保護的分類放真正機密資料。</li>
+    </ol>
+  </div>
+</div>
+
+<main><div class="wrap">
+  <div id="cats"></div>
+  <div class="rowbtns">
+    <button class="bigbtn" id="addCatBtn2" type="button">＋ 新增分類 Add category</button>
+    <button class="bigbtn solid" id="dlBtn2" type="button">⤓ 下載 catalog.json</button>
+  </div>
+
+  <div class="jsonpane">
+    <label class="f" for="jsonArea">產出的 JSON（可直接複製貼上）· Generated JSON
+      <textarea id="jsonArea" spellcheck="false" readonly></textarea>
+    </label>
+  </div>
+</div></main>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+"use strict";
+
+var TYPE_TAGS = ["material","tool","quiz","course","research","video","showcase"];
+var AUD_TAGS  = ["teacher","student","exec"];
+var data = null;
+
+/* ---------- utils ---------- */
+function esc(s){
+  return String(s == null ? "" : s).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];
+  });
+}
+var toastTmr;
+function toast(msg, bad){
+  var t = document.getElementById("toast");
+  t.textContent = msg; t.classList.toggle("bad", !!bad); t.classList.add("on");
+  clearTimeout(toastTmr);
+  toastTmr = setTimeout(function(){ t.classList.remove("on"); }, 2600);
+}
+function slug(s){
+  return String(s || "").toLowerCase().trim()
+    .replace(/[^a-z0-9一-鿿]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60)
+    || ("id-" + Math.abs(Date.parse(document.lastModified) || 0).toString(36)
+        + "-" + (data ? data.categories.length : 0));
+}
+function sha256hex(str){
+  return crypto.subtle.digest("SHA-256", new TextEncoder().encode(str)).then(function(b){
+    return Array.prototype.map.call(new Uint8Array(b), function(x){
+      return x.toString(16).padStart(2, "0");
+    }).join("");
+  });
+}
+function todayISO(){
+  /* Derived from the document, not a live clock, so re-renders stay stable. */
+  var d = new Date(document.lastModified);
+  if(isNaN(d)) return data && data.meta ? data.meta.updated : "";
+  return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0")
+    + "-" + String(d.getDate()).padStart(2, "0");
+}
+
+/* ---------- theme ---------- */
+document.getElementById("themeBtn").addEventListener("click", function(){
+  var cur = document.documentElement.getAttribute("data-theme");
+  var nx = cur === "dark" ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", nx);
+  localStorage.setItem("hub.theme", nx);
+});
+(function(){
+  var t = localStorage.getItem("hub.theme");
+  if(!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  document.documentElement.setAttribute("data-theme", t);
+})();
+
+/* ---------- render ---------- */
+function tagPick(it, ci, ii){
+  function grp(list){
+    return list.map(function(t){
+      var on = (it.tags || []).indexOf(t) !== -1;
+      var lb = (data.tagLabels && data.tagLabels[t])
+             ? data.tagLabels[t].zh + " / " + data.tagLabels[t].en : t;
+      return '<label><input type="checkbox" data-tag="' + esc(t) + '" data-ci="' + ci
+        + '" data-ii="' + ii + '"' + (on ? " checked" : "") + "> " + esc(lb) + "</label>";
+    }).join("");
+  }
+  return '<div class="tagpick">' + grp(TYPE_TAGS) + grp(AUD_TAGS) + "</div>";
+}
+
+function itemHTML(it, ci, ii, n){
+  var pub = it.published !== false;
+  return '<div class="item' + (pub ? "" : " hidden-row") + '">'
+    + '<div class="itop">'
+    + '<label class="ck"><input type="checkbox" data-ipub data-ci="' + ci + '" data-ii="' + ii
+      + '"' + (pub ? " checked" : "") + "> 顯示</label>"
+    + '<span class="t">' + esc((it.title && it.title.zh) || "(未命名)")
+      + "<em>" + esc((it.title && it.title.en) || "") + "</em></span>"
+    + '<button class="sb" type="button" data-imv="-1" data-ci="' + ci + '" data-ii="' + ii
+      + '"' + (ii === 0 ? " disabled" : "") + " title=\"上移\">↑</button>"
+    + '<button class="sb" type="button" data-imv="1" data-ci="' + ci + '" data-ii="' + ii
+      + '"' + (ii === n - 1 ? " disabled" : "") + " title=\"下移\">↓</button>"
+    + '<a class="sb" href="' + esc(it.url || "#") + '" target="_blank" rel="noopener">開啟↗</a>'
+    + '<button class="sb dz" type="button" data-idel data-ci="' + ci + '" data-ii="' + ii
+      + '">刪除</button>'
+    + "</div>"
+    + '<div class="iedit"><div class="fg">'
+    + '<label class="f">標題（中文）<input data-fld="title.zh" data-ci="' + ci + '" data-ii="'
+      + ii + '" value="' + esc(it.title && it.title.zh) + '"></label>'
+    + '<label class="f">Title (English)<input data-fld="title.en" data-ci="' + ci
+      + '" data-ii="' + ii + '" value="' + esc(it.title && it.title.en) + '"></label>'
+    + '<label class="f wide">網址 URL<input data-fld="url" type="url" data-ci="' + ci
+      + '" data-ii="' + ii + '" value="' + esc(it.url) + '"></label>'
+    + '<label class="f">說明（中文）<textarea data-fld="desc.zh" data-ci="' + ci
+      + '" data-ii="' + ii + '">' + esc(it.desc && it.desc.zh) + "</textarea></label>"
+    + '<label class="f">Description (English)<textarea data-fld="desc.en" data-ci="' + ci
+      + '" data-ii="' + ii + '">' + esc(it.desc && it.desc.en) + "</textarea></label>"
+    + '<div class="f wide" style="grid-column:1/-1">標籤 Tags' + tagPick(it, ci, ii) + "</div>"
+    + "</div></div></div>";
+}
+
+function catHTML(cat, ci, nc){
+  var items = cat.items || [];
+  var pub = cat.published !== false;
+  var vis = items.filter(function(i){ return i.published !== false; }).length;
+  return '<details class="cat"' + (cat.__open ? " open" : "") + ' data-ci="' + ci + '">'
+    + "<summary>"
+    + '<span class="nm">' + esc((cat.name && cat.name.zh) || "(未命名分類)")
+      + "<em>" + esc((cat.name && cat.name.en) || "") + "</em></span>"
+    + '<span class="pill">' + vis + " / " + items.length + " 項</span>"
+    + (cat.lock ? '<span class="pill lk">🔒 密碼</span>' : "")
+    + (pub ? "" : '<span class="pill off">已隱藏</span>')
+    + '<button class="sb" type="button" data-cmv="-1" data-ci="' + ci + '"'
+      + (ci === 0 ? " disabled" : "") + ">↑</button>"
+    + '<button class="sb" type="button" data-cmv="1" data-ci="' + ci + '"'
+      + (ci === nc - 1 ? " disabled" : "") + ">↓</button>"
+    + "</summary>"
+    + '<div class="catbody"><div class="fg">'
+    + '<label class="f">分類名稱（中文）<input data-cfld="name.zh" data-ci="' + ci
+      + '" value="' + esc(cat.name && cat.name.zh) + '"></label>'
+    + '<label class="f">Category name (English)<input data-cfld="name.en" data-ci="' + ci
+      + '" value="' + esc(cat.name && cat.name.en) + '"></label>'
+    + '<label class="f">代號 ID（網址錨點用）<input data-cfld="id" data-ci="' + ci
+      + '" value="' + esc(cat.id) + '"></label>'
+    + '<label class="f">圖示符號<input data-cfld="icon" data-ci="' + ci + '" value="'
+      + esc(cat.icon || "◆") + '" maxlength="3"></label>'
+    + '<label class="f">說明（中文）<textarea data-cfld="desc.zh" data-ci="' + ci + '">'
+      + esc(cat.desc && cat.desc.zh) + "</textarea></label>"
+    + '<label class="f">Description (English)<textarea data-cfld="desc.en" data-ci="' + ci
+      + '">' + esc(cat.desc && cat.desc.en) + "</textarea></label>"
+    + '<div class="f wide" style="grid-column:1/-1">'
+      + '<label class="ck"><input type="checkbox" data-cpub data-ci="' + ci + '"'
+      + (pub ? " checked" : "") + "> 在總入口顯示這個分類</label></div>"
+    + "</div>"
+    + lockHTML(cat, ci)
+    + '<div class="items"><h3>項目 Items（' + items.length + "）</h3>"
+    + items.map(function(it, ii){ return itemHTML(it, ci, ii, items.length); }).join("")
+    + '<div class="rowbtns">'
+    + '<button class="bigbtn" type="button" data-iadd data-ci="' + ci + '">＋ 新增項目</button>'
+    + '<button class="bigbtn" type="button" data-cdel data-ci="' + ci
+      + '" style="border-color:var(--err);color:var(--err)">刪除整個分類</button>'
+    + "</div></div></div></details>";
+}
+
+function lockHTML(cat, ci){
+  var has = !!cat.lock;
+  return '<div class="lockbox">'
+    + '<label class="ck"><input type="checkbox" data-lockon data-ci="' + ci + '"'
+      + (has ? " checked" : "") + "> 這個分類需要密碼才能展開</label>"
+    + (has
+      ? "<p>輸入新密碼後按「產生」即可換密碼。目前雜湊值已寫入 catalog.json。</p>"
+        + '<div class="fg">'
+        + '<label class="f">新密碼<input type="text" data-newpw data-ci="' + ci
+          + '" placeholder="輸入新密碼後按產生" autocomplete="off"></label>'
+        + '<label class="f">提示（中文）<input data-lfld="hint.zh" data-ci="' + ci
+          + '" value="' + esc(cat.lock.hint && cat.lock.hint.zh) + '"></label>'
+        + '<label class="f">Hint (English)<input data-lfld="hint.en" data-ci="' + ci
+          + '" value="' + esc(cat.lock.hint && cat.lock.hint.en) + '"></label>'
+        + "</div>"
+        + '<button class="bigbtn" type="button" data-genhash data-ci="' + ci
+          + '">產生雜湊 Generate hash</button>'
+        + '<div class="hashout">hash: ' + esc(cat.lock.hash || "(未設定)") + "</div>"
+      : "<p style=\"margin-bottom:0\">未設密碼，任何人都能看到這個分類。</p>")
+    + "</div>";
+}
+
+function render(){
+  var host = document.getElementById("cats");
+  var open = {};
+  host.querySelectorAll("details.cat").forEach(function(d){
+    open[d.getAttribute("data-ci")] = d.open;
+  });
+  data.categories.forEach(function(c, i){
+    if(c.__open === undefined) c.__open = !!open[i];
+    else c.__open = open[i] !== undefined ? open[i] : c.__open;
+  });
+  host.innerHTML = data.categories
+    .map(function(c, i){ return catHTML(c, i, data.categories.length); }).join("");
+  syncJSON();
+}
+
+/* ---------- serialize ---------- */
+function clean(){
+  var out = JSON.parse(JSON.stringify(data));
+  out.meta.updated = todayISO();
+  out.categories.forEach(function(c, i){
+    delete c.__open;       /* UI-only: which accordion rows are expanded */
+    delete c.__lastLock;   /* UI-only: undo buffer for the passcode toggle */
+    c.order = i + 1;
+    if(!c.lock) c.lock = null;
+  });
+  return out;
+}
+function syncJSON(){
+  document.getElementById("jsonArea").value = JSON.stringify(clean(), null, 2);
+}
+
+/* ---------- mutations ---------- */
+function setPath(obj, path, val){
+  var parts = path.split("."), o = obj;
+  for(var i = 0; i < parts.length - 1; i++){
+    if(typeof o[parts[i]] !== "object" || o[parts[i]] === null) o[parts[i]] = {};
+    o = o[parts[i]];
+  }
+  o[parts[parts.length - 1]] = val;
+}
+function move(arr, i, d){
+  var j = i + d;
+  if(j < 0 || j >= arr.length) return;
+  var t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+}
+
+document.getElementById("cats").addEventListener("input", function(e){
+  var el = e.target, ci = +el.getAttribute("data-ci");
+  if(isNaN(ci)) return;
+  var cat = data.categories[ci];
+  if(!cat) return;
+
+  if(el.hasAttribute("data-fld")){
+    var ii = +el.getAttribute("data-ii");
+    setPath(cat.items[ii], el.getAttribute("data-fld"), el.value);
+    syncJSON(); return;
+  }
+  if(el.hasAttribute("data-cfld")){
+    setPath(cat, el.getAttribute("data-cfld"), el.value);
+    syncJSON(); return;
+  }
+  if(el.hasAttribute("data-lfld") && cat.lock){
+    setPath(cat.lock, el.getAttribute("data-lfld"), el.value);
+    syncJSON(); return;
+  }
+});
+
+document.getElementById("cats").addEventListener("change", function(e){
+  var el = e.target, ci = +el.getAttribute("data-ci");
+  if(isNaN(ci)) return;
+  var cat = data.categories[ci];
+  if(!cat) return;
+
+  if(el.hasAttribute("data-ipub")){
+    cat.items[+el.getAttribute("data-ii")].published = el.checked; render(); return;
+  }
+  if(el.hasAttribute("data-cpub")){ cat.published = el.checked; render(); return; }
+  if(el.hasAttribute("data-tag")){
+    var it = cat.items[+el.getAttribute("data-ii")];
+    var t = el.getAttribute("data-tag");
+    it.tags = it.tags || [];
+    var k = it.tags.indexOf(t);
+    if(el.checked && k === -1) it.tags.push(t);
+    if(!el.checked && k !== -1) it.tags.splice(k, 1);
+    syncJSON(); return;
+  }
+  if(el.hasAttribute("data-lockon")){
+    if(el.checked){
+      /* Restore the previous passcode if the box was only just unticked, so an
+         accidental toggle does not silently throw the password away. */
+      if(cat.__lastLock){
+        cat.lock = cat.__lastLock;
+        delete cat.__lastLock;
+        toast("已恢復先前設定的密碼");
+      } else {
+        cat.lock = { salt: cat.id, hash: "", hint: { zh: "請向授課教師索取密碼。",
+          en: "Please request the passcode from the instructor." } };
+        toast("已啟用密碼，請輸入新密碼並按「產生雜湊」");
+      }
+    } else {
+      cat.__lastLock = cat.lock;
+      cat.lock = null;
+      toast("已取消密碼；重新勾選可復原");
+    }
+    render(); return;
+  }
+});
+
+document.getElementById("cats").addEventListener("click", function(e){
+  var el = e.target.closest("button");
+  if(!el) return;
+  var ci = +el.getAttribute("data-ci");
+  if(isNaN(ci)) return;
+  var cat = data.categories[ci];
+
+  if(el.hasAttribute("data-cmv")){
+    e.preventDefault(); move(data.categories, ci, +el.getAttribute("data-cmv")); render(); return;
+  }
+  if(el.hasAttribute("data-imv")){
+    e.preventDefault();
+    cat.__open = true;
+    move(cat.items, +el.getAttribute("data-ii"), +el.getAttribute("data-imv"));
+    render(); return;
+  }
+  if(el.hasAttribute("data-idel")){
+    var ii = +el.getAttribute("data-ii");
+    var nm = (cat.items[ii].title && cat.items[ii].title.zh) || cat.items[ii].url;
+    if(!confirm("確定刪除「" + nm + "」？")) return;
+    cat.__open = true; cat.items.splice(ii, 1); render();
+    toast("已刪除項目"); return;
+  }
+  if(el.hasAttribute("data-cdel")){
+    if(!confirm("確定刪除整個分類「" + ((cat.name && cat.name.zh) || cat.id)
+      + "」及其 " + (cat.items || []).length + " 個項目？")) return;
+    data.categories.splice(ci, 1); render(); toast("已刪除分類"); return;
+  }
+  if(el.hasAttribute("data-iadd")){
+    cat.__open = true;
+    cat.items.push({ id: "new-item-" + (cat.items.length + 1), published: true,
+      title: { zh: "", en: "" }, desc: { zh: "", en: "" }, url: "", tags: ["material"] });
+    render();
+    var d = document.querySelector('details.cat[data-ci="' + ci + '"]');
+    if(d){
+      var rows = d.querySelectorAll(".item");
+      var last = rows[rows.length - 1];
+      if(last){ last.scrollIntoView({ block: "center" });
+        var inp = last.querySelector('[data-fld="title.zh"]'); if(inp) inp.focus(); }
+    }
+    return;
+  }
+  if(el.hasAttribute("data-genhash")){
+    var box = el.closest(".lockbox");
+    var pwEl = box.querySelector("[data-newpw]");
+    var pw = pwEl ? pwEl.value : "";
+    if(!pw){ toast("請先輸入新密碼", true); return; }
+    cat.lock.salt = cat.id;
+    sha256hex(cat.id + ":" + pw).then(function(h){
+      cat.lock.hash = h; cat.__open = true; render();
+      toast("雜湊已產生，記得下載 catalog.json");
+    }).catch(function(){
+      toast("此瀏覽器無法計算雜湊，請用 http(s) 開啟本頁", true);
+    });
+    return;
+  }
+});
+
+/* ---------- toolbar ---------- */
+function addCat(){
+  var n = data.categories.length + 1;
+  data.categories.push({ id: "new-category-" + n, order: n, published: true, icon: "◆",
+    name: { zh: "新分類 " + n, en: "New Category " + n },
+    desc: { zh: "", en: "" }, lock: null, items: [], __open: true });
+  render();
+  var els = document.querySelectorAll("details.cat");
+  var last = els[els.length - 1];
+  if(last){ last.scrollIntoView({ block: "center" });
+    var i = last.querySelector('[data-cfld="name.zh"]'); if(i) i.select(); }
+}
+document.getElementById("addCatBtn").addEventListener("click", addCat);
+document.getElementById("addCatBtn2").addEventListener("click", addCat);
+
+function download(){
+  var txt = JSON.stringify(clean(), null, 2) + "\n";
+  var blob = new Blob([txt], { type: "application/json;charset=utf-8" });
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "catalog.json";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(function(){ URL.revokeObjectURL(a.href); }, 1500);
+  toast("已下載 catalog.json — 請覆蓋 Hub 資料夾內的同名檔案");
+}
+document.getElementById("dlBtn").addEventListener("click", download);
+document.getElementById("dlBtn2").addEventListener("click", download);
+
+document.getElementById("copyBtn").addEventListener("click", function(){
+  var txt = JSON.stringify(clean(), null, 2);
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt)
+      .then(function(){ toast("JSON 已複製到剪貼簿"); })
+      .catch(function(){ toast("複製失敗，請從下方文字框手動複製", true); });
+  } else {
+    var a = document.getElementById("jsonArea");
+    a.removeAttribute("readonly"); a.select(); a.setAttribute("readonly", "");
+    toast("請按 Ctrl+C 複製");
+  }
+});
+
+document.getElementById("reloadBtn").addEventListener("click", function(){
+  if(!confirm("重新從 catalog.json 載入？未下載的改動會遺失。")) return;
+  boot(true);
+});
+
+/* ---------- boot ---------- */
+function boot(force){
+  fetch("catalog.json", { cache: force ? "reload" : "no-cache" })
+    .then(function(r){ if(!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function(d){
+      data = d;
+      data.categories = data.categories || [];
+      data.categories.forEach(function(c){ c.items = c.items || []; });
+      render();
+      if(force) toast("已重新載入");
+    })
+    .catch(function(err){
+      document.getElementById("cats").innerHTML =
+        '<div class="note" style="border-color:var(--err);color:var(--err)">'
+        + "<b>無法載入 catalog.json</b><br>請以本機伺服器開啟本頁（例如 "
+        + "<code>python -m http.server</code>），直接用 file:// 開啟會被瀏覽器阻擋。</div>";
+      console.error("[admin] load failed:", err);
+    });
+}
+boot(false);
+})();
+</script>
+</body>
+</html>

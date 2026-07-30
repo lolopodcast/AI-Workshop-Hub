@@ -1,9 +1,12 @@
 {
   "meta": {
-    "version": "1.0.0",
+    "version": "1.1.0",
     "updated": "2026-07-30",
     "site": {
-      "title": { "zh": "AI 教學資源總入口", "en": "AI Teaching Resources Hub" },
+      "title": {
+        "zh": "AI 教學資源總入口",
+        "en": "AI Teaching Resources Hub"
+      },
       "subtitle": {
         "zh": "駱世民 教授 · 國立暨南國際大學國際企業學系",
         "en": "Prof. Shihmin Lo · Dept. of International Business Studies, NCNU"
@@ -12,19 +15,57 @@
         "zh": "AI 素養、EMI/EML 教學、課程營運與產品實作的互動教材集",
         "en": "Interactive materials for AI literacy, EMI/EML teaching, course operations, and product practicum"
       }
+    },
+    "siteLock": {
+      "salt": "site-gate",
+      "hash": "b59e6989708ee81fa81d6eca9b078971d0a8509ea4f2300bf3b31a586515ab3e",
+      "hint": {
+        "zh": "本站僅供工作坊參與者與課程學生使用，密碼請向駱世民教授索取。",
+        "en": "This hub is for workshop participants and enrolled students. Please request the passcode from Prof. Shihmin Lo."
+      }
     }
   },
   "tagLabels": {
-    "material": { "zh": "教材", "en": "Material" },
-    "tool": { "zh": "工具", "en": "Tool" },
-    "quiz": { "zh": "測驗", "en": "Quiz" },
-    "course": { "zh": "課程頁", "en": "Course Page" },
-    "research": { "zh": "研究", "en": "Research" },
-    "video": { "zh": "影片", "en": "Video" },
-    "showcase": { "zh": "成果", "en": "Showcase" },
-    "teacher": { "zh": "教師", "en": "Teachers" },
-    "student": { "zh": "學生", "en": "Students" },
-    "exec": { "zh": "主管／研究者", "en": "Executives / Researchers" }
+    "material": {
+      "zh": "教材",
+      "en": "Material"
+    },
+    "tool": {
+      "zh": "工具",
+      "en": "Tool"
+    },
+    "quiz": {
+      "zh": "測驗",
+      "en": "Quiz"
+    },
+    "course": {
+      "zh": "課程頁",
+      "en": "Course Page"
+    },
+    "research": {
+      "zh": "研究",
+      "en": "Research"
+    },
+    "video": {
+      "zh": "影片",
+      "en": "Video"
+    },
+    "showcase": {
+      "zh": "成果",
+      "en": "Showcase"
+    },
+    "teacher": {
+      "zh": "教師",
+      "en": "Teachers"
+    },
+    "student": {
+      "zh": "學生",
+      "en": "Students"
+    },
+    "exec": {
+      "zh": "主管／研究者",
+      "en": "Executives / Researchers"
+    }
   },
   "categories": [
     {
@@ -32,7 +73,10 @@
       "order": 1,
       "published": true,
       "icon": "◆",
-      "name": { "zh": "AI 基礎與工具生態", "en": "AI Foundations & Tool Ecosystem" },
+      "name": {
+        "zh": "AI 基礎與工具生態",
+        "en": "AI Foundations & Tool Ecosystem"
+      },
       "desc": {
         "zh": "從模型比較、Vibe Coding 到容器化 Agent 工作流，建立 AI 使用的共通語言與動手能力。",
         "en": "From model comparison and Vibe Coding to containerized agent workflows — building a shared language and hands-on capability for AI."
@@ -42,83 +86,197 @@
         {
           "id": "ai-ecosystem-comparison",
           "published": true,
-          "title": { "zh": "AI 生態系比較：Claude / ChatGPT / Gemini", "en": "AI Ecosystem Comparison — Claude vs ChatGPT vs Gemini" },
-          "desc": { "zh": "三大主流 AI 平台的能力、定價與適用場景對照。", "en": "Side-by-side comparison of capability, pricing, and best-fit scenarios across the three major AI platforms." },
+          "title": {
+            "zh": "AI 生態系比較：Claude / ChatGPT / Gemini",
+            "en": "AI Ecosystem Comparison — Claude vs ChatGPT vs Gemini"
+          },
+          "desc": {
+            "zh": "三大主流 AI 平台的能力、定價與適用場景對照。",
+            "en": "Side-by-side comparison of capability, pricing, and best-fit scenarios across the three major AI platforms."
+          },
           "url": "https://lolopodcast.github.io/AI-Ecosystem-Comparison/",
-          "tags": ["material", "teacher", "student"]
+          "tags": [
+            "material",
+            "teacher",
+            "student"
+          ]
         },
         {
           "id": "ml-dl-genai-vibe-coding",
           "published": true,
-          "title": { "zh": "VC · Vibe Coding 互動學習指南", "en": "VC · Vibe Coding Interactive Guide (ML / DL / GenAI)" },
-          "desc": { "zh": "釐清機器學習、深度學習與生成式 AI 的分層關係，並帶入 Vibe Coding 實作。", "en": "Clarifies the layered relationship of ML, DL, and GenAI, then moves into hands-on Vibe Coding." },
+          "title": {
+            "zh": "VC · Vibe Coding 互動學習指南",
+            "en": "VC · Vibe Coding Interactive Guide (ML / DL / GenAI)"
+          },
+          "desc": {
+            "zh": "釐清機器學習、深度學習與生成式 AI 的分層關係，並帶入 Vibe Coding 實作。",
+            "en": "Clarifies the layered relationship of ML, DL, and GenAI, then moves into hands-on Vibe Coding."
+          },
           "url": "https://lolopodcast.github.io/ML-DL-GenAI-Vibe-Coding/",
-          "tags": ["material", "teacher", "student"]
+          "tags": [
+            "material",
+            "teacher",
+            "student"
+          ]
         },
         {
           "id": "nblm-gem-kb",
           "published": true,
-          "title": { "zh": "Google NotebookLM 與 AI 工具工作流", "en": "Google NotebookLM & AI Tool Workflow" },
-          "desc": { "zh": "以 NotebookLM 為核心的知識庫建置與跨工具串接流程。", "en": "Building a knowledge base around NotebookLM and chaining it with other AI tools." },
+          "title": {
+            "zh": "Google NotebookLM 與 AI 工具工作流",
+            "en": "Google NotebookLM & AI Tool Workflow"
+          },
+          "desc": {
+            "zh": "以 NotebookLM 為核心的知識庫建置與跨工具串接流程。",
+            "en": "Building a knowledge base around NotebookLM and chaining it with other AI tools."
+          },
           "url": "https://lolopodcast.github.io/NBLM-Gem-KB/",
-          "tags": ["material", "tool", "teacher"]
+          "tags": [
+            "material",
+            "tool",
+            "teacher"
+          ]
         },
         {
           "id": "aicf",
           "published": true,
-          "title": { "zh": "AICF · AI 素養共通語言學習平台", "en": "AICF · AI Literacy Common Language Platform" },
-          "desc": { "zh": "AI 素養能力框架，用於課程設計與能力盤點的共通語言。", "en": "An AI competency framework providing shared vocabulary for curriculum design and capability mapping." },
+          "title": {
+            "zh": "AICF · AI 素養共通語言學習平台",
+            "en": "AICF · AI Literacy Common Language Platform"
+          },
+          "desc": {
+            "zh": "AI 素養能力框架，用於課程設計與能力盤點的共通語言。",
+            "en": "An AI competency framework providing shared vocabulary for curriculum design and capability mapping."
+          },
           "url": "https://lolopodcast.github.io/AICF-AI-Competency-Framework/",
-          "tags": ["material", "teacher", "exec"]
+          "tags": [
+            "material",
+            "teacher",
+            "exec"
+          ]
         },
         {
           "id": "git-github-for-non-coders",
           "published": true,
-          "title": { "zh": "Git／GitHub 基礎：Vibe Coding 必修課", "en": "Git & GitHub Essentials for Non-Coders" },
-          "desc": { "zh": "給非技術人員的版本控制入門，雙語、RWD、附語音導覽。", "en": "Version control for non-technical users — bilingual, responsive, with audio narration." },
+          "title": {
+            "zh": "Git／GitHub 基礎：Vibe Coding 必修課",
+            "en": "Git & GitHub Essentials for Non-Coders"
+          },
+          "desc": {
+            "zh": "給非技術人員的版本控制入門，雙語、RWD、附語音導覽。",
+            "en": "Version control for non-technical users — bilingual, responsive, with audio narration."
+          },
           "url": "https://lolopodcast.github.io/Git-GitHub-VibeCoding-for-Non-Coders/",
-          "tags": ["material", "teacher", "student"]
+          "tags": [
+            "material",
+            "teacher",
+            "student"
+          ]
         },
         {
           "id": "container-ai-workflow",
           "published": true,
-          "title": { "zh": "AI 容器化與高階 Agent 數據情報工作流", "en": "Containerized AI & Advanced Agent Intelligence Workflow" },
-          "desc": { "zh": "容器化環境下的 AI Agent 部署與數據情報自動化流程。", "en": "Deploying AI agents in containerized environments and automating data-intelligence pipelines." },
+          "title": {
+            "zh": "AI 容器化與高階 Agent 數據情報工作流",
+            "en": "Containerized AI & Advanced Agent Intelligence Workflow"
+          },
+          "desc": {
+            "zh": "容器化環境下的 AI Agent 部署與數據情報自動化流程。",
+            "en": "Deploying AI agents in containerized environments and automating data-intelligence pipelines."
+          },
           "url": "https://lolopodcast.github.io/container-ai-workflow/",
-          "tags": ["material", "teacher", "exec"]
+          "tags": [
+            "material",
+            "teacher",
+            "exec"
+          ]
         },
         {
           "id": "container-ai-workflow-quiz",
           "published": true,
-          "title": { "zh": "AI 容器化與 Agent 工作流 · 主題測驗", "en": "Containerized AI & Agent Workflow · Topic Quiz" },
-          "desc": { "zh": "搭配容器化 AI 工作流教材的多主題測驗，含儀表板與成績匯出。", "en": "Companion multi-topic quiz for the containerized AI workflow material, with dashboard and CSV export." },
+          "title": {
+            "zh": "AI 容器化與 Agent 工作流 · 主題測驗",
+            "en": "Containerized AI & Agent Workflow · Topic Quiz"
+          },
+          "desc": {
+            "zh": "搭配容器化 AI 工作流教材的多主題測驗，含儀表板與成績匯出。",
+            "en": "Companion multi-topic quiz for the containerized AI workflow material, with dashboard and CSV export."
+          },
           "url": "https://lolopodcast.github.io/container-ai-workflow/CONTAINER_AI_WORKFLOW_QUIZ.html",
-          "tags": ["quiz", "student"]
+          "tags": [
+            "quiz",
+            "student"
+          ]
         },
         {
           "id": "daily-brief",
           "published": true,
-          "title": { "zh": "駱駱精選晨報", "en": "LoLo's Daily Brief" },
-          "desc": { "zh": "每日 AI 與商業要聞精選，作為課堂暖身與時事討論素材。", "en": "Curated daily AI and business headlines — a warm-up and current-affairs resource for class." },
+          "title": {
+            "zh": "駱駱精選晨報",
+            "en": "LoLo's Daily Brief"
+          },
+          "desc": {
+            "zh": "每日 AI 與商業要聞精選，作為課堂暖身與時事討論素材。",
+            "en": "Curated daily AI and business headlines — a warm-up and current-affairs resource for class."
+          },
           "url": "https://lolopodcast.github.io/daily-brief/",
-          "tags": ["tool", "teacher", "student"]
+          "tags": [
+            "tool",
+            "teacher",
+            "student"
+          ]
         },
         {
           "id": "ep34-vibe-coding-workshop-video",
           "published": true,
-          "title": { "zh": "EP34 · AI-EMI 課程 Vibe Coding 工作坊短片（雙語 10 分鐘）", "en": "EP34 · AI-EMI Course Vibe Coding Workshop (Bilingual, 10 min)" },
-          "desc": { "zh": "工作坊宣傳與概念導覽短片，適合作為研習開場。", "en": "Workshop trailer and concept walkthrough — a good opener for training sessions." },
+          "title": {
+            "zh": "EP34 · AI-EMI 課程 Vibe Coding 工作坊短片（雙語 10 分鐘）",
+            "en": "EP34 · AI-EMI Course Vibe Coding Workshop (Bilingual, 10 min)"
+          },
+          "desc": {
+            "zh": "工作坊宣傳與概念導覽短片，適合作為研習開場。",
+            "en": "Workshop trailer and concept walkthrough — a good opener for training sessions."
+          },
           "url": "https://youtu.be/AdyVk8vMbnM",
-          "tags": ["video", "teacher", "student"]
+          "tags": [
+            "video",
+            "teacher",
+            "student"
+          ]
+        },
+        {
+          "id": "read-analyze-act-safety-gate",
+          "published": true,
+          "title": {
+            "zh": "AIWF · AI 協作工作流方法論",
+            "en": "AIWF · AI Collaboration Workflow Methodology"
+          },
+          "desc": {
+            "zh": "先辨識合作模式（Assistant／Co-pilot／Agent），再選定產品介面與執行環境，建立可驗收、可控管風險的 Read–Analyze–Act 安全閘門。",
+            "en": "Identify the collaboration mode, product interface, and execution environment in turn — a Read–Analyze–Act safety gate for choosing AI workflows you can verify and control."
+          },
+          "url": "https://lolopodcast.github.io/read-analyze-act-safety-gate/",
+          "tags": [
+            "material",
+            "teacher",
+            "student"
+          ]
         }
-      ]
+      ],
+      "short": {
+        "zh": "AI基礎",
+        "en": "AI Basics"
+      }
     },
     {
       "id": "he-transformation",
       "order": 2,
       "published": true,
       "icon": "▲",
-      "name": { "zh": "高教轉型與組織變革", "en": "Higher-Ed Transformation & Organizational Change" },
+      "name": {
+        "zh": "高教轉型與組織變革",
+        "en": "Higher-Ed Transformation & Organizational Change"
+      },
       "desc": {
         "zh": "AI 衝擊下大學與專業組織的角色重構、慣性突破與變革路徑。",
         "en": "Rethinking the role of universities and professional organizations under AI — breaking inertia and mapping change paths."
@@ -128,51 +286,106 @@
         {
           "id": "breakdown-university-professors",
           "published": true,
-          "title": { "zh": "AI 時代教育大解構", "en": "Deconstructing Education in the AI Era" },
-          "desc": { "zh": "拆解大學、校園與教授角色在 AI 時代的重組邏輯。", "en": "Unpacking how the roles of the university, the campus, and the professor are being reassembled." },
+          "title": {
+            "zh": "AI 時代教育大解構",
+            "en": "Deconstructing Education in the AI Era"
+          },
+          "desc": {
+            "zh": "拆解大學、校園與教授角色在 AI 時代的重組邏輯。",
+            "en": "Unpacking how the roles of the university, the campus, and the professor are being reassembled."
+          },
           "url": "https://lolopodcast.github.io/Breakdown-of-University-Campus-Professors/",
-          "tags": ["material", "teacher", "exec"]
+          "tags": [
+            "material",
+            "teacher",
+            "exec"
+          ]
         },
         {
           "id": "organizational-inertia",
           "published": true,
-          "title": { "zh": "OIDC · 逆轉組織慣性", "en": "OIDC · Reversing Organizational Inertia" },
-          "desc": { "zh": "組織慣性的診斷與逆轉框架，適用於系所與企業變革。", "en": "A framework for diagnosing and reversing organizational inertia, applicable to academic units and firms." },
+          "title": {
+            "zh": "OIDC · 逆轉組織慣性",
+            "en": "OIDC · Reversing Organizational Inertia"
+          },
+          "desc": {
+            "zh": "組織慣性的診斷與逆轉框架，適用於系所與企業變革。",
+            "en": "A framework for diagnosing and reversing organizational inertia, applicable to academic units and firms."
+          },
           "url": "https://lolopodcast.github.io/Organizational-Inertia/",
-          "tags": ["material", "exec"]
+          "tags": [
+            "material",
+            "exec"
+          ]
         },
         {
           "id": "agentic-ai-org-transformation",
           "published": true,
-          "title": { "zh": "代理式 AI 與組織變革", "en": "Agentic AI & Organizational Transformation" },
-          "desc": { "zh": "Agentic AI 導入對流程、分工與治理結構的影響。", "en": "How agentic AI adoption reshapes processes, division of labor, and governance." },
+          "title": {
+            "zh": "代理式 AI 與組織變革",
+            "en": "Agentic AI & Organizational Transformation"
+          },
+          "desc": {
+            "zh": "Agentic AI 導入對流程、分工與治理結構的影響。",
+            "en": "How agentic AI adoption reshapes processes, division of labor, and governance."
+          },
           "url": "https://lolopodcast.github.io/Agentic-AI-Org-Transformation/",
-          "tags": ["material", "exec", "teacher"]
+          "tags": [
+            "material",
+            "exec",
+            "teacher"
+          ]
         },
         {
           "id": "eot-inclusive-excellence",
           "published": true,
-          "title": { "zh": "EOT · 共融卓越，不斷成長", "en": "EOT · Inclusive Excellence, Excel Over Time" },
-          "desc": { "zh": "以共融為前提的長期卓越發展模式。", "en": "A model for long-run excellence grounded in inclusion." },
+          "title": {
+            "zh": "EOT · 共融卓越，不斷成長",
+            "en": "EOT · Inclusive Excellence, Excel Over Time"
+          },
+          "desc": {
+            "zh": "以共融為前提的長期卓越發展模式。",
+            "en": "A model for long-run excellence grounded in inclusion."
+          },
           "url": "https://lolopodcast.github.io/EOT---Inclusive-Excellence_Excel-Over-Time/",
-          "tags": ["material", "exec", "teacher"]
+          "tags": [
+            "material",
+            "exec",
+            "teacher"
+          ]
         },
         {
           "id": "nursing-transformation-strategy",
           "published": true,
-          "title": { "zh": "NTS · 台灣護理轉型策略", "en": "NTS · Taiwan Nursing Transformation Strategy" },
-          "desc": { "zh": "以策略架構分析台灣護理人力與制度轉型。", "en": "A strategic analysis of Taiwan's nursing workforce and institutional transformation." },
+          "title": {
+            "zh": "NTS · 台灣護理轉型策略",
+            "en": "NTS · Taiwan Nursing Transformation Strategy"
+          },
+          "desc": {
+            "zh": "以策略架構分析台灣護理人力與制度轉型。",
+            "en": "A strategic analysis of Taiwan's nursing workforce and institutional transformation."
+          },
           "url": "https://lolopodcast.github.io/Nursing-Transformation-Strategy/",
-          "tags": ["research", "exec"]
+          "tags": [
+            "research",
+            "exec"
+          ]
         }
-      ]
+      ],
+      "short": {
+        "zh": "高教轉型",
+        "en": "Higher-Ed"
+      }
     },
     {
       "id": "learning-cognition",
       "order": 3,
       "published": true,
       "icon": "●",
-      "name": { "zh": "學習、認知與動機", "en": "Learning, Cognition & Motivation" },
+      "name": {
+        "zh": "學習、認知與動機",
+        "en": "Learning, Cognition & Motivation"
+      },
       "desc": {
         "zh": "人類認知運作、學習動機轉換與思考升級的理論與可操作工具。",
         "en": "Theory and actionable tools for human cognition, motivation transformation, and thinking upgrades."
@@ -182,51 +395,107 @@
         {
           "id": "human-intelligence",
           "published": true,
-          "title": { "zh": "人類智慧：多模態外部表徵認知", "en": "Human Intelligence — Multimodal External Representation & Adaptive Cognition" },
-          "desc": { "zh": "以外部表徵與適應性認知解釋人類智慧的運作方式。", "en": "Explaining human intelligence through external representation and adaptive cognition." },
+          "title": {
+            "zh": "人類智慧：多模態外部表徵認知",
+            "en": "Human Intelligence — Multimodal External Representation & Adaptive Cognition"
+          },
+          "desc": {
+            "zh": "以外部表徵與適應性認知解釋人類智慧的運作方式。",
+            "en": "Explaining human intelligence through external representation and adaptive cognition."
+          },
           "url": "https://lolopodcast.github.io/Human-Intelligence_Adaptive-Cognition/",
-          "tags": ["material", "teacher", "student"]
+          "tags": [
+            "material",
+            "teacher",
+            "student"
+          ]
         },
         {
           "id": "motivation-theories",
           "published": true,
-          "title": { "zh": "Motivation Flywheel · 促進大學生學習動機", "en": "Motivation Flywheel — Driving Undergraduate Learning Motivation" },
-          "desc": { "zh": "整合主要動機理論並轉為課堂可用的飛輪模型。", "en": "Consolidates major motivation theories into a classroom-ready flywheel model." },
+          "title": {
+            "zh": "Motivation Flywheel · 促進大學生學習動機",
+            "en": "Motivation Flywheel — Driving Undergraduate Learning Motivation"
+          },
+          "desc": {
+            "zh": "整合主要動機理論並轉為課堂可用的飛輪模型。",
+            "en": "Consolidates major motivation theories into a classroom-ready flywheel model."
+          },
           "url": "https://lolopodcast.github.io/Motivation-Theories/",
-          "tags": ["material", "teacher"]
+          "tags": [
+            "material",
+            "teacher"
+          ]
         },
         {
           "id": "motivation-transformation-system",
           "published": true,
-          "title": { "zh": "動機轉換系統 v2：從內部驅動到外部接軌", "en": "Motivation Transformation System v2 — From Intrinsic Drive to External Alignment" },
-          "desc": { "zh": "將內在動機轉譯為外部成果與職涯接軌的操作系統。", "en": "An operating system for translating intrinsic motivation into external outcomes and career alignment." },
+          "title": {
+            "zh": "動機轉換系統 v2：從內部驅動到外部接軌",
+            "en": "Motivation Transformation System v2 — From Intrinsic Drive to External Alignment"
+          },
+          "desc": {
+            "zh": "將內在動機轉譯為外部成果與職涯接軌的操作系統。",
+            "en": "An operating system for translating intrinsic motivation into external outcomes and career alignment."
+          },
           "url": "https://lolopodcast.github.io/Motivation-Transformation-System/",
-          "tags": ["material", "teacher", "student"]
+          "tags": [
+            "material",
+            "teacher",
+            "student"
+          ]
         },
         {
           "id": "thinking-upgrader",
           "published": true,
-          "title": { "zh": "TU · Thinking Upgrader 思考升級器", "en": "TU · Thinking Upgrader" },
-          "desc": { "zh": "結構化的思考升級流程與提問工具。", "en": "A structured process and question toolkit for upgrading thinking." },
+          "title": {
+            "zh": "TU · Thinking Upgrader 思考升級器",
+            "en": "TU · Thinking Upgrader"
+          },
+          "desc": {
+            "zh": "結構化的思考升級流程與提問工具。",
+            "en": "A structured process and question toolkit for upgrading thinking."
+          },
           "url": "https://lolopodcast.github.io/Thinking-Upgrader/",
-          "tags": ["tool", "teacher", "student"]
+          "tags": [
+            "tool",
+            "teacher",
+            "student"
+          ]
         },
         {
           "id": "hypothesis-testing",
           "published": true,
-          "title": { "zh": "統計假說檢定：商業決策指南", "en": "Statistical Hypothesis Testing — A Guide for Business Decisions" },
-          "desc": { "zh": "以商業決策情境教授假說檢定的判讀與誤用防範。", "en": "Teaching hypothesis testing through business decision scenarios, including common misreadings." },
+          "title": {
+            "zh": "統計假說檢定：商業決策指南",
+            "en": "Statistical Hypothesis Testing — A Guide for Business Decisions"
+          },
+          "desc": {
+            "zh": "以商業決策情境教授假說檢定的判讀與誤用防範。",
+            "en": "Teaching hypothesis testing through business decision scenarios, including common misreadings."
+          },
           "url": "https://lolopodcast.github.io/Hypothesis-Testing/",
-          "tags": ["material", "student", "teacher"]
+          "tags": [
+            "material",
+            "student",
+            "teacher"
+          ]
         }
-      ]
+      ],
+      "short": {
+        "zh": "學習認知",
+        "en": "Learning"
+      }
     },
     {
       "id": "career-venturing",
       "order": 4,
       "published": true,
       "icon": "▶",
-      "name": { "zh": "生涯發展與創業", "en": "Career Development & Venturing" },
+      "name": {
+        "zh": "生涯發展與創業",
+        "en": "Career Development & Venturing"
+      },
       "desc": {
         "zh": "從人生原則、生涯策略架構到募資實務的完整規劃路徑。",
         "en": "A full planning path from life principles and career strategy architecture to fundraising practice."
@@ -236,43 +505,88 @@
         {
           "id": "5-pairs-of-p",
           "published": true,
-          "title": { "zh": "5 Pairs of P · 未來生涯五對原則", "en": "5 Pairs of P-Principles for Future Life & Career" },
-          "desc": { "zh": "五組成對原則，用於檢視人生與職涯的選擇取捨。", "en": "Five paired principles for examining trade-offs in life and career choices." },
+          "title": {
+            "zh": "5 Pairs of P · 未來生涯五對原則",
+            "en": "5 Pairs of P-Principles for Future Life & Career"
+          },
+          "desc": {
+            "zh": "五組成對原則，用於檢視人生與職涯的選擇取捨。",
+            "en": "Five paired principles for examining trade-offs in life and career choices."
+          },
           "url": "https://lolopodcast.github.io/5-Pairs-of-P-Principles-for-Future-Life-Career/",
-          "tags": ["material", "student", "teacher"]
+          "tags": [
+            "material",
+            "student",
+            "teacher"
+          ]
         },
         {
           "id": "career-strategy-architecture",
           "published": true,
-          "title": { "zh": "CSA · 生涯策略架構（PMCS-EMI）", "en": "CSA · Career Strategy Architecture (PMCS-EMI)" },
-          "desc": { "zh": "以策略管理方法建構個人生涯路徑的架構工具。", "en": "A strategic-management approach to architecting an individual career path." },
+          "title": {
+            "zh": "CSA · 生涯策略架構（PMCS-EMI）",
+            "en": "CSA · Career Strategy Architecture (PMCS-EMI)"
+          },
+          "desc": {
+            "zh": "以策略管理方法建構個人生涯路徑的架構工具。",
+            "en": "A strategic-management approach to architecting an individual career path."
+          },
           "url": "https://lolopodcast.github.io/Career-Strategy-Architecture/",
-          "tags": ["tool", "student"]
+          "tags": [
+            "tool",
+            "student"
+          ]
         },
         {
           "id": "career-plan-anne-cld",
           "published": true,
-          "title": { "zh": "研究所升學策略：運動事務 × 經濟（AI 升級版）", "en": "Strategic Graduate Pathways — Sports Affairs × Economics (AI Upgrade)" },
-          "desc": { "zh": "跨領域升學與生涯規劃的個案示範。", "en": "A worked case of cross-disciplinary graduate and career planning." },
+          "title": {
+            "zh": "研究所升學策略：運動事務 × 經濟（AI 升級版）",
+            "en": "Strategic Graduate Pathways — Sports Affairs × Economics (AI Upgrade)"
+          },
+          "desc": {
+            "zh": "跨領域升學與生涯規劃的個案示範。",
+            "en": "A worked case of cross-disciplinary graduate and career planning."
+          },
           "url": "https://lolopodcast.github.io/Career-Plan-Anne-CLD/",
-          "tags": ["material", "student"]
+          "tags": [
+            "material",
+            "student"
+          ]
         },
         {
           "id": "venturing-formula",
           "published": true,
-          "title": { "zh": "募資策略 · EMBA 工作坊", "en": "Fundraising Strategy · EMBA Workshop" },
-          "desc": { "zh": "創業募資的階段設計、估值邏輯與投資人溝通。", "en": "Stage design, valuation logic, and investor communication for startup fundraising." },
+          "title": {
+            "zh": "募資策略 · EMBA 工作坊",
+            "en": "Fundraising Strategy · EMBA Workshop"
+          },
+          "desc": {
+            "zh": "創業募資的階段設計、估值邏輯與投資人溝通。",
+            "en": "Stage design, valuation logic, and investor communication for startup fundraising."
+          },
           "url": "https://lolopodcast.github.io/venturing-formula/",
-          "tags": ["material", "exec", "student"]
+          "tags": [
+            "material",
+            "exec",
+            "student"
+          ]
         }
-      ]
+      ],
+      "short": {
+        "zh": "生涯創業",
+        "en": "Career"
+      }
     },
     {
       "id": "society-tech-risk",
       "order": 5,
       "published": true,
       "icon": "■",
-      "name": { "zh": "社會、科技與風險", "en": "Society, Technology & Risk" },
+      "name": {
+        "zh": "社會、科技與風險",
+        "en": "Society, Technology & Risk"
+      },
       "desc": {
         "zh": "地緣政治、關鍵基礎設施韌性與科技對人際關係的衝擊。",
         "en": "Geopolitics, critical-infrastructure resilience, and technology's impact on human relationships."
@@ -282,35 +596,71 @@
         {
           "id": "geopolitics-taiwan-sovereignty",
           "published": true,
-          "title": { "zh": "TSO · 地緣政經趨勢下的臺灣主權", "en": "TSO · Taiwan Sovereignty amid Geopolitical & Economic Shifts" },
-          "desc": { "zh": "地緣政經演變脈絡下的主權議題分析。", "en": "Analysis of sovereignty questions within evolving geopolitical and economic dynamics." },
+          "title": {
+            "zh": "TSO · 地緣政經趨勢下的臺灣主權",
+            "en": "TSO · Taiwan Sovereignty amid Geopolitical & Economic Shifts"
+          },
+          "desc": {
+            "zh": "地緣政經演變脈絡下的主權議題分析。",
+            "en": "Analysis of sovereignty questions within evolving geopolitical and economic dynamics."
+          },
           "url": "https://lolopodcast.github.io/Geopolitics-and-Taiwan-Sovereignty/",
-          "tags": ["material", "exec", "student"]
+          "tags": [
+            "material",
+            "exec",
+            "student"
+          ]
         },
         {
           "id": "mobile-network-outage-drill",
           "published": true,
-          "title": { "zh": "行動斷網演練行動方案", "en": "Mobile Network Outage Drill" },
-          "desc": { "zh": "斷網情境下的個人與組織應變演練設計。", "en": "Designing personal and organizational contingency drills for network outages." },
+          "title": {
+            "zh": "行動斷網演練行動方案",
+            "en": "Mobile Network Outage Drill"
+          },
+          "desc": {
+            "zh": "斷網情境下的個人與組織應變演練設計。",
+            "en": "Designing personal and organizational contingency drills for network outages."
+          },
           "url": "https://lolopodcast.github.io/mobile-network-outage-drill/",
-          "tags": ["tool", "exec", "student"]
+          "tags": [
+            "tool",
+            "exec",
+            "student"
+          ]
         },
         {
           "id": "technologies-substitute-close-relationships",
           "published": true,
-          "title": { "zh": "科技替代親密關係 · 研究模型", "en": "Technologies Substituting Close Relationships · Research Model" },
-          "desc": { "zh": "科技替代親密關係的研究架構與假說模型。", "en": "Research framework and hypothesis model on technology as a substitute for close relationships." },
+          "title": {
+            "zh": "科技替代親密關係 · 研究模型",
+            "en": "Technologies Substituting Close Relationships · Research Model"
+          },
+          "desc": {
+            "zh": "科技替代親密關係的研究架構與假說模型。",
+            "en": "Research framework and hypothesis model on technology as a substitute for close relationships."
+          },
           "url": "https://lolopodcast.github.io/Technologies-Substitute-Close-Relationships/",
-          "tags": ["research", "exec"]
+          "tags": [
+            "research",
+            "exec"
+          ]
         }
-      ]
+      ],
+      "short": {
+        "zh": "社會風險",
+        "en": "Society"
+      }
     },
     {
       "id": "emi-eml",
       "order": 6,
       "published": true,
       "icon": "◈",
-      "name": { "zh": "EMI/EML 工作坊與教學工具", "en": "EMI/EML Workshops & Teaching Tools" },
+      "name": {
+        "zh": "EMI/EML 工作坊與教學工具",
+        "en": "EMI/EML Workshops & Teaching Tools"
+      },
       "desc": {
         "zh": "各校 EMI-AI 工作坊教材，以及口說評分、簽到、即時問答等課堂工具。",
         "en": "EMI-AI workshop materials delivered at partner universities, plus classroom tools for speaking assessment, check-in, and live Q&A."
@@ -320,83 +670,174 @@
         {
           "id": "tespa-2026",
           "published": true,
-          "title": { "zh": "TESPA 2026 · AI Vibe Coding for EML", "en": "TESPA 2026 · AI Vibe Coding for EML" },
-          "desc": { "zh": "2026/05/15 TESPA 工作坊教材：以 Vibe Coding 支援 EML 學習歷程分析。", "en": "TESPA workshop (2026-05-15): using Vibe Coding to support EML learning-process analytics." },
+          "title": {
+            "zh": "TESPA 2026 · AI Vibe Coding for EML",
+            "en": "TESPA 2026 · AI Vibe Coding for EML"
+          },
+          "desc": {
+            "zh": "2026/05/15 TESPA 工作坊教材：以 Vibe Coding 支援 EML 學習歷程分析。",
+            "en": "TESPA workshop (2026-05-15): using Vibe Coding to support EML learning-process analytics."
+          },
           "url": "https://lolopodcast.github.io/20260515-TESPA-Vibe-Coding-for-EML/",
-          "tags": ["material", "teacher"]
+          "tags": [
+            "material",
+            "teacher"
+          ]
         },
         {
           "id": "nthu-2026",
           "published": true,
-          "title": { "zh": "清大 NTHU · EMI-AI 轉型工作坊：從教學到學習", "en": "NTHU · EMI-AI Transformation Workshop — From Teaching to Learning" },
-          "desc": { "zh": "2026/04/23 清華大學工作坊教材，聚焦 SPA 教材製作。", "en": "NTHU workshop (2026-04-23) focused on building SPA learning materials." },
+          "title": {
+            "zh": "清大 NTHU · EMI-AI 轉型工作坊：從教學到學習",
+            "en": "NTHU · EMI-AI Transformation Workshop — From Teaching to Learning"
+          },
+          "desc": {
+            "zh": "2026/04/23 清華大學工作坊教材，聚焦 SPA 教材製作。",
+            "en": "NTHU workshop (2026-04-23) focused on building SPA learning materials."
+          },
           "url": "https://lolopodcast.github.io/20260423-NTHU-EMI-AI-Workshop-for-SPA-creation/",
-          "tags": ["material", "teacher"]
+          "tags": [
+            "material",
+            "teacher"
+          ]
         },
         {
           "id": "yuntech-2026",
           "published": true,
-          "title": { "zh": "雲科 YunTech · AI 融入 EMI 課程", "en": "YunTech · AI Vibe Coding in EMI Courses" },
-          "desc": { "zh": "2026/06/17 雲林科技大學工作坊互動式摘要。", "en": "Interactive summary of the YunTech workshop (2026-06-17)." },
+          "title": {
+            "zh": "雲科 YunTech · AI 融入 EMI 課程",
+            "en": "YunTech · AI Vibe Coding in EMI Courses"
+          },
+          "desc": {
+            "zh": "2026/06/17 雲林科技大學工作坊互動式摘要。",
+            "en": "Interactive summary of the YunTech workshop (2026-06-17)."
+          },
           "url": "https://lolopodcast.github.io/20260617-YunTech-AI-Vibecoding-in-EMI/",
-          "tags": ["material", "teacher"]
+          "tags": [
+            "material",
+            "teacher"
+          ]
         },
         {
           "id": "spa-gallery",
           "published": true,
-          "title": { "zh": "EMI SPA 課程成果展示牆", "en": "EMI SPA Course Showcase Gallery" },
-          "desc": { "zh": "工作坊與課程學員 SPA 作品的集合展示頁。", "en": "Collected SPA works from workshop and course participants." },
+          "title": {
+            "zh": "EMI SPA 課程成果展示牆",
+            "en": "EMI SPA Course Showcase Gallery"
+          },
+          "desc": {
+            "zh": "工作坊與課程學員 SPA 作品的集合展示頁。",
+            "en": "Collected SPA works from workshop and course participants."
+          },
           "url": "https://lolopodcast.github.io/SPA-Gallery/",
-          "tags": ["showcase", "teacher", "student"]
+          "tags": [
+            "showcase",
+            "teacher",
+            "student"
+          ]
         },
         {
           "id": "emi-rubrics-cefr2020",
           "published": true,
-          "title": { "zh": "商管 EMI 評量系統（CEFR 2020）", "en": "Business EMI Assessment System (CEFR 2020)" },
-          "desc": { "zh": "對位 CEFR 2020 的商管 EMI 評分規準與量表。", "en": "EMI assessment rubrics and scales for business courses, aligned to CEFR 2020." },
+          "title": {
+            "zh": "商管 EMI 評量系統（CEFR 2020）",
+            "en": "Business EMI Assessment System (CEFR 2020)"
+          },
+          "desc": {
+            "zh": "對位 CEFR 2020 的商管 EMI 評分規準與量表。",
+            "en": "EMI assessment rubrics and scales for business courses, aligned to CEFR 2020."
+          },
           "url": "https://lolopodcast.github.io/EMI-Rubrics-CEFR2020/",
-          "tags": ["tool", "teacher"]
+          "tags": [
+            "tool",
+            "teacher"
+          ]
         },
         {
           "id": "emi-speaking-analyzer",
           "published": true,
-          "title": { "zh": "ESA · EMI 口說分析器", "en": "ESA · EMI Speaking Analyzer" },
-          "desc": { "zh": "分析 EMI/EML 口說表現並回饋改善建議。", "en": "Analyzes EMI/EML speaking performance and returns improvement feedback." },
+          "title": {
+            "zh": "ESA · EMI 口說分析器",
+            "en": "ESA · EMI Speaking Analyzer"
+          },
+          "desc": {
+            "zh": "分析 EMI/EML 口說表現並回饋改善建議。",
+            "en": "Analyzes EMI/EML speaking performance and returns improvement feedback."
+          },
           "url": "https://lolopodcast.github.io/EMI-EML-Speaking-Analyzer/",
-          "tags": ["tool", "teacher", "student"]
+          "tags": [
+            "tool",
+            "teacher",
+            "student"
+          ]
         },
         {
           "id": "emi-ai-self-introduction",
           "published": true,
-          "title": { "zh": "EMI-AI 個人自我介紹練習", "en": "EMI-AI Personal Introduction Practice" },
-          "desc": { "zh": "以 AI 輔助的英語自我介紹結構化練習工具。", "en": "AI-assisted structured practice tool for English self-introductions." },
+          "title": {
+            "zh": "EMI-AI 個人自我介紹練習",
+            "en": "EMI-AI Personal Introduction Practice"
+          },
+          "desc": {
+            "zh": "以 AI 輔助的英語自我介紹結構化練習工具。",
+            "en": "AI-assisted structured practice tool for English self-introductions."
+          },
           "url": "https://lolopodcast.github.io/EMI-AI-Self-Introduction/",
-          "tags": ["tool", "student"]
+          "tags": [
+            "tool",
+            "student"
+          ]
         },
         {
           "id": "cloud-check-in-out",
           "published": true,
-          "title": { "zh": "雲端打卡簽到系統（NCNU EMBA）", "en": "Cloud Check-in / Check-out System (NCNU EMBA)" },
-          "desc": { "zh": "課堂簽到與簽退的雲端記錄工具。", "en": "Cloud-based classroom check-in and check-out logging." },
+          "title": {
+            "zh": "雲端打卡簽到系統（NCNU EMBA）",
+            "en": "Cloud Check-in / Check-out System (NCNU EMBA)"
+          },
+          "desc": {
+            "zh": "課堂簽到與簽退的雲端記錄工具。",
+            "en": "Cloud-based classroom check-in and check-out logging."
+          },
           "url": "https://lolopodcast.github.io/Cloud-Check-in-Check-out/",
-          "tags": ["tool", "teacher"]
+          "tags": [
+            "tool",
+            "teacher"
+          ]
         },
         {
           "id": "irs-classqa",
           "published": true,
-          "title": { "zh": "ClassQ&A · 課堂即時問答系統", "en": "ClassQ&A · Instant Response System" },
-          "desc": { "zh": "課堂即時提問與回應的互動系統。", "en": "Interactive system for live classroom questions and responses." },
+          "title": {
+            "zh": "ClassQ&A · 課堂即時問答系統",
+            "en": "ClassQ&A · Instant Response System"
+          },
+          "desc": {
+            "zh": "課堂即時提問與回應的互動系統。",
+            "en": "Interactive system for live classroom questions and responses."
+          },
           "url": "https://lolopodcast.github.io/IRS-Instant-Response-System/",
-          "tags": ["tool", "teacher", "student"]
+          "tags": [
+            "tool",
+            "teacher",
+            "student"
+          ]
         }
-      ]
+      ],
+      "short": {
+        "zh": "EMI/EML",
+        "en": "EMI/EML"
+      }
     },
     {
       "id": "course-ops",
       "order": 7,
       "published": true,
       "icon": "◉",
-      "name": { "zh": "課程營運與專題評量", "en": "Course Operations & Project Assessment" },
+      "name": {
+        "zh": "課程營運與專題評量",
+        "en": "Course Operations & Project Assessment"
+      },
       "desc": {
         "zh": "SMMC / ITBM 課程主頁、班級側寫分析與學期專題評量機制。",
         "en": "SMMC / ITBM course hubs, class profile analytics, and term-project assessment mechanisms."
@@ -413,67 +854,140 @@
         {
           "id": "smmc-executive-hub",
           "published": true,
-          "title": { "zh": "SMMC · 跨國企業策略管理課程主頁", "en": "SMMC · Strategic Management of Multinational Corporations Hub" },
-          "desc": { "zh": "SMMC-EMI 課程的總覽入口與教學資源。", "en": "Overview hub and teaching resources for the SMMC-EMI course." },
+          "title": {
+            "zh": "SMMC · 跨國企業策略管理課程主頁",
+            "en": "SMMC · Strategic Management of Multinational Corporations Hub"
+          },
+          "desc": {
+            "zh": "SMMC-EMI 課程的總覽入口與教學資源。",
+            "en": "Overview hub and teaching resources for the SMMC-EMI course."
+          },
           "url": "https://lolopodcast.github.io/SMMC-Executive-Hub/",
-          "tags": ["course", "teacher", "student"]
+          "tags": [
+            "course",
+            "teacher",
+            "student"
+          ]
         },
         {
           "id": "itbm-executive-hub",
           "published": true,
-          "title": { "zh": "ITBM-EMI · 課程主頁與公告", "en": "ITBM-EMI · Executive Course Hub & Notifications" },
-          "desc": { "zh": "1142 ITBM-EMI 課程公告與資源頁。", "en": "Announcements and resources for the 1142 ITBM-EMI course." },
+          "title": {
+            "zh": "ITBM-EMI · 課程主頁與公告",
+            "en": "ITBM-EMI · Executive Course Hub & Notifications"
+          },
+          "desc": {
+            "zh": "1142 ITBM-EMI 課程公告與資源頁。",
+            "en": "Announcements and resources for the 1142 ITBM-EMI course."
+          },
           "url": "https://ncnulolotas.github.io/1142ITBM.Notification/Webpage.html",
-          "tags": ["course", "student"]
+          "tags": [
+            "course",
+            "student"
+          ]
         },
         {
           "id": "smmc-class-profile-1142",
           "published": true,
-          "title": { "zh": "1142 SMMC-EMI 班級側寫分析報告", "en": "1142 SMMC-EMI Student Profile Analysis Report" },
-          "desc": { "zh": "修課學生背景、能力分布與分組建議分析。", "en": "Analysis of student background, capability distribution, and grouping recommendations." },
+          "title": {
+            "zh": "1142 SMMC-EMI 班級側寫分析報告",
+            "en": "1142 SMMC-EMI Student Profile Analysis Report"
+          },
+          "desc": {
+            "zh": "修課學生背景、能力分布與分組建議分析。",
+            "en": "Analysis of student background, capability distribution, and grouping recommendations."
+          },
           "url": "https://lolopodcast.github.io/1142-SMMC-EMI-Class-Profile/",
-          "tags": ["research", "teacher"]
+          "tags": [
+            "research",
+            "teacher"
+          ]
         },
         {
           "id": "itbm-class-profile-1142",
           "published": true,
-          "title": { "zh": "1142 ITBM-EMI 班級側寫分析報告", "en": "1142 ITBM-EMI Student Profile Analysis Report" },
-          "desc": { "zh": "修課學生背景、能力分布與分組建議分析。", "en": "Analysis of student background, capability distribution, and grouping recommendations." },
+          "title": {
+            "zh": "1142 ITBM-EMI 班級側寫分析報告",
+            "en": "1142 ITBM-EMI Student Profile Analysis Report"
+          },
+          "desc": {
+            "zh": "修課學生背景、能力分布與分組建議分析。",
+            "en": "Analysis of student background, capability distribution, and grouping recommendations."
+          },
           "url": "https://lolopodcast.github.io/1142-ITBM-EMI-Class-Profile/",
-          "tags": ["research", "teacher"]
+          "tags": [
+            "research",
+            "teacher"
+          ]
         },
         {
           "id": "smmc-tp-competition-1142",
           "published": true,
-          "title": { "zh": "1142 SMMC-EMI 專題網頁競賽", "en": "1142 SMMC-EMI TP Webpage Competition" },
-          "desc": { "zh": "各組學期專題網頁作品與競賽結果。", "en": "Group term-project webpages and competition results." },
+          "title": {
+            "zh": "1142 SMMC-EMI 專題網頁競賽",
+            "en": "1142 SMMC-EMI TP Webpage Competition"
+          },
+          "desc": {
+            "zh": "各組學期專題網頁作品與競賽結果。",
+            "en": "Group term-project webpages and competition results."
+          },
           "url": "https://ncnulolotas.github.io/1142SMMC-EMI-TPs/",
-          "tags": ["showcase", "student", "teacher"]
+          "tags": [
+            "showcase",
+            "student",
+            "teacher"
+          ]
         },
         {
           "id": "term-project-evaluation",
           "published": true,
-          "title": { "zh": "TPE · 學期專題評量", "en": "TPE · Term Project Evaluation" },
-          "desc": { "zh": "學期專題的評量規準、流程與計分工具。", "en": "Rubrics, workflow, and scoring tools for term-project evaluation." },
+          "title": {
+            "zh": "TPE · 學期專題評量",
+            "en": "TPE · Term Project Evaluation"
+          },
+          "desc": {
+            "zh": "學期專題的評量規準、流程與計分工具。",
+            "en": "Rubrics, workflow, and scoring tools for term-project evaluation."
+          },
           "url": "https://lolopodcast.github.io/Term-Project-Evaluation/",
-          "tags": ["tool", "teacher"]
+          "tags": [
+            "tool",
+            "teacher"
+          ]
         },
         {
           "id": "sic-stores-in-competition",
           "published": true,
-          "title": { "zh": "SIC · 門市競爭模擬", "en": "SIC · Stores In Competition" },
-          "desc": { "zh": "門市競爭情境的課堂模擬與決策練習。", "en": "Classroom simulation and decision practice for retail store competition." },
+          "title": {
+            "zh": "SIC · 門市競爭模擬",
+            "en": "SIC · Stores In Competition"
+          },
+          "desc": {
+            "zh": "門市競爭情境的課堂模擬與決策練習。",
+            "en": "Classroom simulation and decision practice for retail store competition."
+          },
           "url": "https://lolopodcast.github.io/SIC---Stores-In-Competition/",
-          "tags": ["tool", "student", "teacher"]
+          "tags": [
+            "tool",
+            "student",
+            "teacher"
+          ]
         }
-      ]
+      ],
+      "short": {
+        "zh": "課程營運",
+        "en": "Courses"
+      }
     },
     {
       "id": "product-practicum",
       "order": 8,
       "published": true,
       "icon": "◐",
-      "name": { "zh": "產品與專案實作", "en": "Product & Project Practicum" },
+      "name": {
+        "zh": "產品與專案實作",
+        "en": "Product & Project Practicum"
+      },
       "desc": {
         "zh": "以 PM／PjM 視角帶學生從 AI-Native 產品構想走到可交付的 MVP。",
         "en": "Guiding students from AI-native product concepts to a deliverable MVP through a PM / PjM lens."
@@ -483,60 +997,131 @@
         {
           "id": "ai-native-product-builder-bootcamp",
           "published": true,
-          "title": { "zh": "AI-Native 產品開發營：商業新聞與分析", "en": "AI-Native Product Builder Bootcamp — Business News & Analysis" },
-          "desc": { "zh": "以商業新聞分析為題的 AI-Native 產品開發訓練營教材。", "en": "Bootcamp materials building an AI-native product around business news analysis." },
+          "title": {
+            "zh": "AI-Native 產品開發營：商業新聞與分析",
+            "en": "AI-Native Product Builder Bootcamp — Business News & Analysis"
+          },
+          "desc": {
+            "zh": "以商業新聞分析為題的 AI-Native 產品開發訓練營教材。",
+            "en": "Bootcamp materials building an AI-native product around business news analysis."
+          },
           "url": "https://lolopodcast.github.io/AI-Native-Product-Builder-Bootcamp_Business-News-and-Analysis/",
-          "tags": ["material", "student", "teacher"]
+          "tags": [
+            "material",
+            "student",
+            "teacher"
+          ]
         },
         {
           "id": "bootcamp-ai-saas-labspa",
           "published": true,
-          "title": { "zh": "AI SaaS 開發營 · LabSPA", "en": "AI SaaS Bootcamp · LabSPA" },
-          "desc": { "zh": "AI SaaS 產品開發訓練營與 LabSPA 實作環境。", "en": "AI SaaS product bootcamp with the LabSPA hands-on environment." },
+          "title": {
+            "zh": "AI SaaS 開發營 · LabSPA",
+            "en": "AI SaaS Bootcamp · LabSPA"
+          },
+          "desc": {
+            "zh": "AI SaaS 產品開發訓練營與 LabSPA 實作環境。",
+            "en": "AI SaaS product bootcamp with the LabSPA hands-on environment."
+          },
           "url": "https://lolopodcast.github.io/Bootcamp_AI-SaaS-_-LabSPA/",
-          "tags": ["material", "student"]
+          "tags": [
+            "material",
+            "student"
+          ]
         },
         {
           "id": "ai-emi-vibe-coding-pm-pjm",
           "published": true,
-          "title": { "zh": "AI-native 產品開發工作坊：以 PM／PjM 身分 Vibe Coding", "en": "AI-native Product Workshop — Vibe Coding as a PM / PjM" },
-          "desc": { "zh": "把 Vibe Coding 放進 PM／PjM 工作流的課程教材。", "en": "Course material placing Vibe Coding inside the PM / PjM workflow." },
+          "title": {
+            "zh": "AI-native 產品開發工作坊：以 PM／PjM 身分 Vibe Coding",
+            "en": "AI-native Product Workshop — Vibe Coding as a PM / PjM"
+          },
+          "desc": {
+            "zh": "把 Vibe Coding 放進 PM／PjM 工作流的課程教材。",
+            "en": "Course material placing Vibe Coding inside the PM / PjM workflow."
+          },
           "url": "https://lolopodcast.github.io/AI-EMI-Course-Vibe-Coding-as-a-PM-PjM/",
-          "tags": ["material", "teacher", "student"]
+          "tags": [
+            "material",
+            "teacher",
+            "student"
+          ]
         },
         {
           "id": "pm-po-pl-pcc",
           "published": true,
-          "title": { "zh": "PMA · 軟硬體產品管理（PM／PO／PL／PCC）", "en": "PMA · HW/SW Product Management (PM / PO / PL / PCC)" },
-          "desc": { "zh": "區辨產品管理四種角色的職責與協作界面。", "en": "Distinguishing the responsibilities and interfaces of four product-management roles." },
+          "title": {
+            "zh": "PMA · 軟硬體產品管理（PM／PO／PL／PCC）",
+            "en": "PMA · HW/SW Product Management (PM / PO / PL / PCC)"
+          },
+          "desc": {
+            "zh": "區辨產品管理四種角色的職責與協作界面。",
+            "en": "Distinguishing the responsibilities and interfaces of four product-management roles."
+          },
           "url": "https://lolopodcast.github.io/PM-PO-PL-PCC/",
-          "tags": ["material", "student", "exec"]
+          "tags": [
+            "material",
+            "student",
+            "exec"
+          ]
         },
         {
           "id": "ai-community-manager",
           "published": true,
-          "title": { "zh": "里民通／里長通 · 產品討論紀要", "en": "AI Community Manager · Product Discussion Notes" },
-          "desc": { "zh": "社區治理 AI 產品的需求討論與規格紀要。", "en": "Requirements discussion and spec notes for a community-governance AI product." },
+          "title": {
+            "zh": "里民通／里長通 · 產品討論紀要",
+            "en": "AI Community Manager · Product Discussion Notes"
+          },
+          "desc": {
+            "zh": "社區治理 AI 產品的需求討論與規格紀要。",
+            "en": "Requirements discussion and spec notes for a community-governance AI product."
+          },
           "url": "https://lolopodcast.github.io/AI-Community-Manager/",
-          "tags": ["material", "exec"]
+          "tags": [
+            "material",
+            "exec"
+          ]
         },
         {
           "id": "map-tool",
           "published": true,
-          "title": { "zh": "Map-In · 地址地理編碼與驗證工具", "en": "Map-In · Address Geocoding & Validation Tool" },
-          "desc": { "zh": "批次地址正規化、地理編碼與驗證的實用工具。", "en": "Practical tool for batch address normalization, geocoding, and validation." },
+          "title": {
+            "zh": "Map-In · 地址地理編碼與驗證工具",
+            "en": "Map-In · Address Geocoding & Validation Tool"
+          },
+          "desc": {
+            "zh": "批次地址正規化、地理編碼與驗證的實用工具。",
+            "en": "Practical tool for batch address normalization, geocoding, and validation."
+          },
           "url": "https://lolopodcast.github.io/map-tool/",
-          "tags": ["tool", "student", "exec"]
+          "tags": [
+            "tool",
+            "student",
+            "exec"
+          ]
         },
         {
           "id": "cgm-telemonitoring",
           "published": true,
-          "title": { "zh": "CGM 連續血糖遠距監測回顧", "en": "CGM Telemonitoring Review" },
-          "desc": { "zh": "連續血糖監測遠距照護的文獻與模式回顧。", "en": "Literature and model review of continuous glucose monitoring in telecare." },
+          "title": {
+            "zh": "CGM 連續血糖遠距監測回顧",
+            "en": "CGM Telemonitoring Review"
+          },
+          "desc": {
+            "zh": "連續血糖監測遠距照護的文獻與模式回顧。",
+            "en": "Literature and model review of continuous glucose monitoring in telecare."
+          },
           "url": "https://nanghomnoonaye.github.io/CGM-Telemonitoring/",
-          "tags": ["research", "exec"]
+          "tags": [
+            "research",
+            "exec"
+          ]
         }
-      ]
+      ],
+      "short": {
+        "zh": "產品實作",
+        "en": "Product"
+      }
     }
   ]
 }

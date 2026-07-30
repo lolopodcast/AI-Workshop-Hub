@@ -35,6 +35,39 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
 .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(.9rem,3vw,1.6rem)}
 :focus-visible{outline:3px solid var(--green-3);outline-offset:2px;border-radius:4px}
 
+body[data-locked] header,
+body[data-locked] main{ display:none !important; }
+
+/* ---------- gate (shared login state with index.html) ---------- */
+#gate{ position:fixed; inset:0; z-index:500; display:flex; align-items:center;
+  justify-content:center; padding:1.2rem; background:linear-gradient(160deg,var(--green) 0%,var(--green-2) 100%); }
+html[data-theme=dark] #gate{ background:linear-gradient(160deg,#10221c,#0b1a15) }
+body:not([data-locked]) #gate{ display:none }
+.gatecard{ position:relative; width:min(380px,100%); background:var(--surface);
+  border-radius:calc(var(--r) + 4px); box-shadow:0 20px 40px rgba(0,0,0,.3); padding:2rem 1.6rem 1.7rem;
+  text-align:center }
+.gatetools{ position:absolute; top:.7rem; right:.7rem }
+.gatetools button{ appearance:none; border:1px solid var(--line); background:var(--surface-2);
+  color:var(--ink); width:32px; height:32px; border-radius:8px; cursor:pointer; font-size:.95rem }
+.gatemark{ width:52px; height:52px; margin:0 auto .9rem; border-radius:14px; background:var(--green);
+  color:var(--sand); display:grid; place-items:center; font-family:var(--serif); font-weight:900;
+  font-size:1.35rem }
+html[data-theme=dark] .gatemark{ color:#10221c }
+#gate h1{ margin:0; font-family:var(--serif); font-weight:900; font-size:1.1rem; color:var(--ink) }
+#gate .gatesub{ margin:.5rem 0 0; font-size:.82rem; color:var(--muted) }
+#gate .gatesub small{ display:block; color:var(--muted-2); margin-top:.15rem }
+#gateForm{ display:flex; flex-direction:column; gap:.6rem; margin-top:1.2rem }
+#gatePw{ font:inherit; font-size:1rem; text-align:center; letter-spacing:.04em; padding:.75rem 1rem;
+  border:1.5px solid var(--line); border-radius:999px; background:var(--surface-2); color:var(--ink) }
+#gatePw:focus{ border-color:var(--green-3); outline:none; box-shadow:0 0 0 3px rgba(13,110,80,.16) }
+#gatePw:disabled{ opacity:.6 }
+#gateSubmit{ appearance:none; font:inherit; font-size:.94rem; font-weight:700; cursor:pointer;
+  background:var(--green); color:#fff; border:0; border-radius:999px; padding:.75rem 1rem }
+html[data-theme=dark] #gateSubmit{ color:#0b1a15 }
+#gateSubmit:hover:not(:disabled){ background:var(--green-2) }
+#gateSubmit:disabled{ opacity:.55; cursor:default }
+.gatemsg{ margin:.75rem 0 0; font-size:.82rem; font-weight:600; color:var(--err); min-height:1.2em }
+
 header{position:sticky;top:0;z-index:50;background:var(--green);color:#fff;box-shadow:var(--sh)}
 html[data-theme=dark] header{background:#10221c;border-bottom:1px solid var(--line)}
 header .wrap{display:flex;align-items:center;gap:.6rem;flex-wrap:wrap;padding-top:.65rem;
@@ -60,6 +93,12 @@ html[data-theme=dark] .hb.pri{color:#10221c}
   padding:.05rem .32rem;font-size:.93em}
 
 main{padding:.4rem 0 4rem}
+
+.sitebox{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+  padding:.9rem 1rem;margin:0 0 1.1rem;box-shadow:var(--sh)}
+.sitebox h2{margin:0 0 .3rem;font-family:var(--serif);font-size:.95rem;font-weight:900}
+.sitebox p{margin:0 0 .7rem;font-size:.82rem;color:var(--muted)}
+
 details.cat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
   margin:0 0 .8rem;box-shadow:var(--sh);overflow:hidden}
 details.cat[open]{border-color:var(--green-3)}
@@ -148,7 +187,25 @@ html[data-theme=dark] #toast{color:#0b1a15}
 @media (max-width:560px){ .fg{grid-template-columns:1fr} }
 </style>
 </head>
-<body>
+<body data-locked>
+
+<div id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+  <div class="gatecard">
+    <div class="gatetools">
+      <button id="gateThemeBtn" type="button" aria-label="切換主題">◐</button>
+    </div>
+    <div class="gatemark" aria-hidden="true">AI</div>
+    <h1 id="gateTitle">Hub 內容管理</h1>
+    <p class="gatesub">請輸入站台密碼以繼續<small>Enter the Hub passcode to continue</small></p>
+    <form id="gateForm" autocomplete="off">
+      <input type="password" id="gatePw" name="pw" required disabled
+             placeholder="…" aria-label="密碼">
+      <button type="submit" id="gateSubmit" disabled>進入 Enter</button>
+    </form>
+    <p class="gatemsg" id="gateMsg" role="status" aria-live="polite"></p>
+  </div>
+</div>
+
 <header>
   <div class="wrap">
     <h1>Hub 內容管理<small>Catalog Manager · catalog.json</small></h1>
@@ -157,6 +214,7 @@ html[data-theme=dark] #toast{color:#0b1a15}
     <button class="hb" id="copyBtn" type="button">複製 JSON</button>
     <button class="hb pri" id="dlBtn" type="button">⤓ 下載 catalog.json</button>
     <button class="hb" id="themeBtn" type="button" aria-label="theme">◐</button>
+    <button class="hb" id="lockBtn" type="button" aria-label="登出">🔒 登出</button>
   </div>
 </header>
 
@@ -168,12 +226,27 @@ html[data-theme=dark] #toast{color:#0b1a15}
       <li>改完按右上 <code>⤓ 下載 catalog.json</code>，把下載到的檔案覆蓋 Hub 資料夾裡的
         <code>catalog.json</code>，再 <code>git add / commit / push</code> 即完成更新。</li>
       <li>本頁只在您的瀏覽器裡運作，不會自動寫回硬碟——所以<b>務必下載並覆蓋</b>，否則改動不會生效。</li>
-      <li><b>密碼提醒：</b>靜態網站的密碼屬於前端遮蔽，看得懂原始碼的人可繞過。請勿在受密碼保護的分類放真正機密資料。</li>
+      <li><b>密碼提醒：</b>靜態網站的密碼（含下方的站台登入密碼、各分類密碼）屬於前端遮蔽，看得懂原始碼的人可繞過。請勿放真正機密資料。</li>
     </ol>
   </div>
 </div>
 
 <main><div class="wrap">
+  <div class="sitebox">
+    <h2>🔒 站台登入密碼 · Site Login Passcode</h2>
+    <p>這是進入整個 Hub 首頁（index.html）前的第一道密碼，預設為 <code>proflolothebest</code>。輸入新密碼並按「產生」即可更換；留空並按「移除密碼」可關閉整站登入頁。</p>
+    <div class="fg">
+      <label class="f">新的站台密碼<input type="text" id="siteNewPw" placeholder="輸入新密碼後按產生" autocomplete="off"></label>
+      <label class="f">提示（中文）<input id="siteHintZh"></label>
+      <label class="f">Hint (English)<input id="siteHintEn"></label>
+    </div>
+    <div class="rowbtns">
+      <button class="bigbtn" id="siteGenBtn" type="button">產生雜湊 Generate hash</button>
+      <button class="bigbtn" id="siteOffBtn" type="button" style="border-color:var(--err);color:var(--err)">移除密碼（整站免登入）</button>
+    </div>
+    <div class="hashout" id="siteHashOut">hash: (載入中…)</div>
+  </div>
+
   <div id="cats"></div>
   <div class="rowbtns">
     <button class="bigbtn" id="addCatBtn2" type="button">＋ 新增分類 Add category</button>
@@ -210,12 +283,6 @@ function toast(msg, bad){
   clearTimeout(toastTmr);
   toastTmr = setTimeout(function(){ t.classList.remove("on"); }, 2600);
 }
-function slug(s){
-  return String(s || "").toLowerCase().trim()
-    .replace(/[^a-z0-9一-鿿]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60)
-    || ("id-" + Math.abs(Date.parse(document.lastModified) || 0).toString(36)
-        + "-" + (data ? data.categories.length : 0));
-}
 function sha256hex(str){
   return crypto.subtle.digest("SHA-256", new TextEncoder().encode(str)).then(function(b){
     return Array.prototype.map.call(new Uint8Array(b), function(x){
@@ -231,18 +298,89 @@ function todayISO(){
     + "-" + String(d.getDate()).padStart(2, "0");
 }
 
-/* ---------- theme ---------- */
-document.getElementById("themeBtn").addEventListener("click", function(){
+/* ---------- theme (shared by the page and the gate) ---------- */
+function applyTheme(t){
+  document.documentElement.setAttribute("data-theme", t);
+  localStorage.setItem("hub.theme", t);
+}
+function cycleTheme(){
   var cur = document.documentElement.getAttribute("data-theme");
-  var nx = cur === "dark" ? "light" : "dark";
-  document.documentElement.setAttribute("data-theme", nx);
-  localStorage.setItem("hub.theme", nx);
-});
+  applyTheme(cur === "dark" ? "light" : "dark");
+}
+document.getElementById("themeBtn").addEventListener("click", cycleTheme);
+document.getElementById("gateThemeBtn").addEventListener("click", cycleTheme);
 (function(){
   var t = localStorage.getItem("hub.theme");
   if(!t) t = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
   document.documentElement.setAttribute("data-theme", t);
 })();
+
+/* ---------- site gate: same passcode/localStorage key as index.html, so
+   unlocking either page unlocks both (same-origin, shared storage). Not real
+   access control — see the note above and README. ---------- */
+var GATE_FAIL_KEY = "hub.siteFails";
+function gateFailCount(){ return parseInt(sessionStorage.getItem(GATE_FAIL_KEY) || "0", 10); }
+function gateRegisterFail(){
+  var n = gateFailCount() + 1;
+  sessionStorage.setItem(GATE_FAIL_KEY, String(n));
+  return n;
+}
+function gateResetFails(){ sessionStorage.removeItem(GATE_FAIL_KEY); }
+function gateDelayFor(n){ return n <= 1 ? 0 : Math.min(15, Math.pow(2, n - 1)); }
+
+var gateBusy = false;
+var gateForm = document.getElementById("gateForm");
+var gatePw = document.getElementById("gatePw");
+var gateSubmit = document.getElementById("gateSubmit");
+var gateMsg = document.getElementById("gateMsg");
+
+function gateThrottle(seconds){
+  gateBusy = true;
+  gateSubmit.disabled = true; gatePw.disabled = true;
+  var remain = seconds;
+  (function tick(){
+    if(remain <= 0){
+      gateSubmit.disabled = false; gatePw.disabled = false; gateBusy = false;
+      gateMsg.textContent = "密碼不正確，請再試一次。";
+      gatePw.focus();
+      return;
+    }
+    gateMsg.textContent = "密碼不正確，請再試一次。 (" + remain + "s)";
+    remain--;
+    setTimeout(tick, 1000);
+  })();
+}
+function unlockSite(){
+  document.body.removeAttribute("data-locked");
+  var g = document.getElementById("gate");
+  if(g) g.remove();
+}
+gateForm.addEventListener("submit", function(ev){
+  ev.preventDefault();
+  if(gateBusy || !data) return;
+  var lock = data.meta && data.meta.siteLock;
+  if(!lock || !lock.hash){ unlockSite(); return; }
+  sha256hex((lock.salt || "site-gate") + ":" + gatePw.value).then(function(h){
+    if(h === lock.hash){
+      gateResetFails();
+      localStorage.setItem("hub.siteUnlocked", h);
+      unlockSite();
+      render();
+    } else {
+      var n = gateRegisterFail();
+      var d = gateDelayFor(n);
+      gatePw.value = "";
+      if(d > 0) gateThrottle(d);
+      else { gateMsg.textContent = "密碼不正確，請再試一次。"; gatePw.focus(); }
+    }
+  }).catch(function(){
+    gateMsg.textContent = "crypto.subtle unavailable — serve this page over http(s) or a local server.";
+  });
+});
+document.getElementById("lockBtn").addEventListener("click", function(){
+  localStorage.removeItem("hub.siteUnlocked");
+  location.reload();
+});
 
 /* ---------- render ---------- */
 function tagPick(it, ci, ii){
@@ -314,6 +452,10 @@ function catHTML(cat, ci, nc){
       + '" value="' + esc(cat.id) + '"></label>'
     + '<label class="f">圖示符號<input data-cfld="icon" data-ci="' + ci + '" value="'
       + esc(cat.icon || "◆") + '" maxlength="3"></label>'
+    + '<label class="f">捲動列短標籤（中文，4-6字）<input data-cfld="short.zh" data-ci="' + ci
+      + '" value="' + esc(cat.short && cat.short.zh) + '" maxlength="8"></label>'
+    + '<label class="f">Rail short label (English)<input data-cfld="short.en" data-ci="' + ci
+      + '" value="' + esc(cat.short && cat.short.en) + '" maxlength="16"></label>'
     + '<label class="f">說明（中文）<textarea data-cfld="desc.zh" data-ci="' + ci + '">'
       + esc(cat.desc && cat.desc.zh) + "</textarea></label>"
     + '<label class="f">Description (English)<textarea data-cfld="desc.en" data-ci="' + ci
@@ -354,6 +496,14 @@ function lockHTML(cat, ci){
     + "</div>";
 }
 
+function renderSiteLock(){
+  var lock = data.meta && data.meta.siteLock;
+  var out = document.getElementById("siteHashOut");
+  document.getElementById("siteHintZh").value = (lock && lock.hint && lock.hint.zh) || "";
+  document.getElementById("siteHintEn").value = (lock && lock.hint && lock.hint.en) || "";
+  out.textContent = "hash: " + (lock && lock.hash ? lock.hash : "(未設定 — 整站免登入)");
+}
+
 function render(){
   var host = document.getElementById("cats");
   var open = {};
@@ -366,6 +516,7 @@ function render(){
   });
   host.innerHTML = data.categories
     .map(function(c, i){ return catHTML(c, i, data.categories.length); }).join("");
+  renderSiteLock();
   syncJSON();
 }
 
@@ -520,11 +671,39 @@ document.getElementById("cats").addEventListener("click", function(e){
   }
 });
 
+/* ---------- site-wide login passcode panel ---------- */
+document.getElementById("siteGenBtn").addEventListener("click", function(){
+  var pw = document.getElementById("siteNewPw").value;
+  if(!pw){ toast("請先輸入新密碼", true); return; }
+  sha256hex("site-gate:" + pw).then(function(h){
+    data.meta.siteLock = {
+      salt: "site-gate",
+      hash: h,
+      hint: {
+        zh: document.getElementById("siteHintZh").value || "本站僅供工作坊參與者與課程學生使用，密碼請向駱世民教授索取。",
+        en: document.getElementById("siteHintEn").value || "This hub is for workshop participants and enrolled students. Please request the passcode from Prof. Shihmin Lo."
+      }
+    };
+    document.getElementById("siteNewPw").value = "";
+    render();
+    toast("站台密碼雜湊已產生，記得下載 catalog.json 並覆蓋");
+  }).catch(function(){
+    toast("此瀏覽器無法計算雜湊，請用 http(s) 開啟本頁", true);
+  });
+});
+document.getElementById("siteOffBtn").addEventListener("click", function(){
+  if(!confirm("確定移除站台登入密碼？移除後任何人開啟 index.html 都不需要密碼。")) return;
+  data.meta.siteLock = null;
+  render();
+  toast("已移除站台密碼；記得下載 catalog.json 並覆蓋");
+});
+
 /* ---------- toolbar ---------- */
 function addCat(){
   var n = data.categories.length + 1;
   data.categories.push({ id: "new-category-" + n, order: n, published: true, icon: "◆",
     name: { zh: "新分類 " + n, en: "New Category " + n },
+    short: { zh: "新分類", en: "New" },
     desc: { zh: "", en: "" }, lock: null, items: [], __open: true });
   render();
   var els = document.querySelectorAll("details.cat");
@@ -574,10 +753,21 @@ function boot(force){
       data = d;
       data.categories = data.categories || [];
       data.categories.forEach(function(c){ c.items = c.items || []; });
+
+      var lock = data.meta && data.meta.siteLock;
+      var saved = localStorage.getItem("hub.siteUnlocked");
+      if(!lock || !lock.hash || (saved && saved === lock.hash)){
+        unlockSite();
+      } else {
+        gatePw.disabled = false;
+        gateSubmit.disabled = false;
+        gatePw.placeholder = "請輸入密碼";
+      }
       render();
       if(force) toast("已重新載入");
     })
     .catch(function(err){
+      gateMsg.textContent = "無法載入 catalog.json，請以本機伺服器開啟本頁。";
       document.getElementById("cats").innerHTML =
         '<div class="note" style="border-color:var(--err);color:var(--err)">'
         + "<b>無法載入 catalog.json</b><br>請以本機伺服器開啟本頁（例如 "

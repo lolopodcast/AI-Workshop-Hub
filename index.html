@@ -109,7 +109,12 @@ html[data-theme=dark] #gateSubmit{ color:#0b1a15 }
 header.top{position:sticky;top:0;z-index:100;background:var(--green);color:#fff;
   box-shadow:var(--sh-2)}
 html[data-theme=dark] header.top{background:#10221c;border-bottom:1px solid var(--line)}
-.top .bar{display:flex;align-items:center;gap:.75rem;min-height:var(--hdr);
+/* min-height is a CONSTANT here, never var(--hdr): syncHdr() writes the
+   measured header height into --hdr, so sizing the bar from --hdr would create
+   a feedback loop — in dark mode the header's 1px border made each measurement
+   1px taller than the last, and every mobile URL-bar show/hide resize grew the
+   header by another pixel, visibly stretching it while scrolling. */
+.top .bar{display:flex;align-items:center;gap:.75rem;min-height:64px;
   padding:.55rem clamp(1rem,4vw,2rem);max-width:var(--maxw);margin:0 auto}
 .brand{display:flex;align-items:center;gap:.65rem;min-width:0;flex:1;
   color:#fff;text-decoration:none}
@@ -945,9 +950,16 @@ var ctlEl = document.getElementById("controlsBar");
    silently dropped. They are measured on demand in stickyOffset() instead,
    which is always current — and both bars are single-row/non-wrapping, so the
    measurement is cheap and stable across language switches. */
+var lastHdr = 0;
 function syncHdr(){
   var h = Math.round(hdrEl.getBoundingClientRect().height);
-  if(h > 0) document.documentElement.style.setProperty("--hdr", h + "px");
+  /* Write only on change: the bar's min-height is a constant so no feedback
+     loop is possible, but skipping no-op writes also keeps mobile URL-bar
+     resize storms from thrashing style recalcs. */
+  if(h > 0 && h !== lastHdr){
+    lastHdr = h;
+    document.documentElement.style.setProperty("--hdr", h + "px");
+  }
 }
 /* Bounce the measurement out of the ResizeObserver callback via rAF. Writing a
    custom property straight from the callback re-invalidates layout and Chromium

@@ -2,7 +2,7 @@
  * Bump CACHE when you change any file in APP_SHELL, otherwise clients keep the old copy.
  * catalog.json is deliberately network-first so edits appear without a version bump.
  */
-var CACHE = "ai-hub-v1.1.0";
+var CACHE = "ai-hub-v1.1.1";
 var APP_SHELL = [
   "./",
   "./index.html",

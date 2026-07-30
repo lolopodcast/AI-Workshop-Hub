@@ -245,6 +245,24 @@
           ]
         },
         {
+          "id": "ai-workflow-methodology",
+          "published": true,
+          "title": {
+            "zh": "AIWF · AI 協作工作流方法論",
+            "en": "AIWF · AI Workflow Methodology"
+          },
+          "desc": {
+            "zh": "三層決策架構：先辨識合作模式（Assistant／Co-pilot／Agent），再選產品介面（Chat、Work／Cowork、Coding Agent），最後確認本機、雲端、Sandbox、Container 或 VM 等執行環境與權限，涵蓋記憶與知識供應、成本模型與自主程度設定。",
+            "en": "A three-layer decision framework: identify the collaboration mode (Assistant / Co-pilot / Agent), choose the product surface (Chat, Work/Cowork, coding agents), then confirm the execution environment and permissions — local, cloud, sandbox, container, or VM — plus memory, knowledge supply, cost models, and autonomy settings."
+          },
+          "url": "https://lolopodcast.github.io/AI-Workflow-Methodology/",
+          "tags": [
+            "material",
+            "teacher",
+            "student"
+          ]
+        },
+        {
           "id": "read-analyze-act-safety-gate",
           "published": true,
           "title": {

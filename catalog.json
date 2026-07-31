@@ -686,6 +686,40 @@
       "lock": null,
       "items": [
         {
+          "id": "agentic-ai-emi-eml",
+          "published": true,
+          "title": {
+            "zh": "Agentic AI × EMI/EML 教學設計",
+            "en": "Agentic AI × EMI/EML Instructional Design"
+          },
+          "desc": {
+            "zh": "2026 逢甲大學 iLINK AI 教師工作坊教材：當 Agentic AI 能自主完成多步驟任務，教師角色如何重新定義——從 EMI 到 EML 與自主學習、I-P-O 協作架構、環境建置，到素材流與四階產出鏈。",
+            "en": "From the 2026 FCU iLINK AI faculty workshop: redefining the teacher's role in the agentic-AI era — EMI to EML and self-directed learning, the I-P-O collaboration framework, environment setup, and the four-stage content pipeline."
+          },
+          "url": "https://lolopodcast.github.io/Agentic-AI-EMI-EML/",
+          "tags": [
+            "material",
+            "teacher"
+          ]
+        },
+        {
+          "id": "agentic-ai-emi-eml-quiz",
+          "published": true,
+          "title": {
+            "zh": "Agentic AI × EMI/EML 母 KB 自我檢測",
+            "en": "Agentic AI × EMI/EML Self-Assessment Quiz"
+          },
+          "desc": {
+            "zh": "搭配上方工作坊教材母知識庫的自我檢測測驗：逐主題作答、即時解析與成績儀表板。",
+            "en": "Self-assessment quiz built from the workshop's master knowledge base — per-topic scoring, instant explanations, and a results dashboard."
+          },
+          "url": "https://lolopodcast.github.io/Agentic-AI-EMI-EML/quiz.html",
+          "tags": [
+            "quiz",
+            "teacher"
+          ]
+        },
+        {
           "id": "tespa-2026",
           "published": true,
           "title": {

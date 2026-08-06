@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.1.0",
-    "updated": "2026-07-30",
+    "updated": "2026-08-06",
     "site": {
       "title": {
         "zh": "AI 教學資源總入口",
@@ -662,6 +662,24 @@
           "tags": [
             "research",
             "exec"
+          ]
+        },
+        {
+          "id": "long-term-care-3-0",
+          "published": true,
+          "title": {
+            "zh": "LTC3 · 長照3.0 互動學習",
+            "en": "LTC3 · Long-Term Care 3.0 Interactive Learning"
+          },
+          "desc": {
+            "zh": "導讀《長照十年計畫3.0（115–124年）核定本》：政策沿革、需求推估、八大策略、三大專章與財務永續，含互動實驗室與逐表查核勘誤註記。",
+            "en": "A guided reading of Taiwan's LTC Plan 3.0 (2026–2035): policy evolution, demand estimation, eight strategies, three dedicated chapters and fiscal sustainability — with interactive labs and table-verified erratum notes."
+          },
+          "url": "https://lolopodcast.github.io/Long-Term-Care-3.0/",
+          "tags": [
+            "material",
+            "exec",
+            "student"
           ]
         }
       ],

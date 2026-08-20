@@ -358,6 +358,11 @@ html[data-theme=dark] .profpic{color:#10221c}
 /* hide the non-active language when a single-language mode is chosen */
 html[data-lang=zh] .en-only{display:none!important}
 html[data-lang=en] .zh-only{display:none!important}
+
+/* Friendly protection: only UI chrome resists selection. Card titles and
+   descriptions stay selectable and copyable — the point is to mark ownership,
+   not to fight the reader. */
+header.top,.railbar,footer,button,.stat{-webkit-user-select:none;user-select:none}
 </style>
 </head>
 <body data-locked>
@@ -525,6 +530,63 @@ html[data-lang=en] .zh-only{display:none!important}
     <path d="M12 19V5M5 12l7-7 7 7"></path>
   </svg>
 </button>
+
+<script>
+/* ============ friendly copyright protection ============
+   Same behaviour as the linked material SPAs so the whole collection feels
+   consistent: a right-click surfaces an ownership notice instead of the
+   browser menu, and the view-source shortcuts do the same. Deliberately
+   permissive wherever blocking would be user-hostile rather than protective —
+   the native menu still opens inside form fields (so a passcode can be
+   pasted) and over any text the reader deliberately selected, and Ctrl+P /
+   Ctrl+S are left alone so the catalogue stays printable and savable. This is
+   a courtesy notice, not access control; anything truly private belongs
+   behind `published: false`, not behind a blocked right-click. */
+(function(){
+"use strict";
+var COPYRIGHT_MSG = "Intellectual Property of Prof. Shihmin Lo";
+var toastEl = null, toastTimer = null;
+function showCopyrightToast(){
+  if(!toastEl){
+    toastEl = document.createElement("div");
+    /* Fixed brand colours rather than theme tokens: the pill carries its own
+       background, and staying identical in light and dark keeps it matching
+       the notice on every material page. */
+    toastEl.style.cssText = "position:fixed;bottom:48px;left:50%;transform:translateX(-50%);"
+      + "background:#004030;color:#D8C3A5;padding:10px 20px;border-radius:9999px;"
+      + "font-family:Inter,'Noto Sans TC',sans-serif;font-size:13px;z-index:9999;"
+      + "box-shadow:0 8px 24px rgba(0,0,0,.3);pointer-events:none;";
+    toastEl.textContent = COPYRIGHT_MSG;
+    document.body.appendChild(toastEl);
+  }
+  toastEl.style.display = "block";
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ if(toastEl) toastEl.style.display = "none"; }, 2000);
+}
+window.showCopyrightToast = showCopyrightToast;
+
+document.addEventListener("contextmenu", function(e){
+  var t = e.target;
+  if(t && t.closest && t.closest("input, textarea, [contenteditable]")) return;
+  if(window.getSelection().toString().trim()) return;
+  e.preventDefault();
+  showCopyrightToast();
+});
+
+document.addEventListener("keydown", function(e){
+  var k = (e.key || "").toLowerCase();
+  if(e.key === "F12"){ e.preventDefault(); showCopyrightToast(); return; }
+  if(e.ctrlKey && !e.shiftKey && k === "u"){ e.preventDefault(); showCopyrightToast(); return; }
+  if(e.ctrlKey && e.shiftKey && ["i","j","c"].indexOf(k) !== -1){
+    e.preventDefault(); showCopyrightToast();
+  }
+});
+
+document.addEventListener("dragstart", function(e){
+  if(e.target.tagName === "IMG" || (e.target.closest && e.target.closest("svg"))) e.preventDefault();
+});
+})();
+</script>
 
 <script>
 (function(){

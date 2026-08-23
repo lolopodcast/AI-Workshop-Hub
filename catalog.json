@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.1.0",
-    "updated": "2026-08-06",
+    "updated": "2026-08-23",
     "site": {
       "title": {
         "zh": "AI 教學資源總入口",
@@ -1133,6 +1133,42 @@
             "material",
             "student",
             "exec"
+          ]
+        },
+        {
+          "id": "new-item-8",
+          "published": true,
+          "title": {
+            "zh": "PM 產品經理 · PDMA 七大知識領域",
+            "en": "PM · PDMA Body of Knowledge — Seven Areas"
+          },
+          "desc": {
+            "zh": "以 PDMA／NPDP 七大知識領域拆解產品經理職能，含配分權重與商業／技術／管理三種導向的分類。",
+            "en": "The product manager's remit mapped onto the seven PDMA/NPDP knowledge areas, with weightings and the business / technical / managerial split."
+          },
+          "url": "https://lolopodcast.github.io/AI-Workshop-Hub/docs/PM-Product-Manager_PDMA-Knowledge-Areas_Coggle_SML_20250317.pdf",
+          "tags": [
+            "material",
+            "teacher",
+            "student"
+          ]
+        },
+        {
+          "id": "new-item-9",
+          "published": true,
+          "title": {
+            "zh": "NPD 新產品開發 · 階段關卡模型",
+            "en": "NPD Stage-Gate Model"
+          },
+          "desc": {
+            "zh": "新產品開發六階段與關卡，含跨部門接力（MKT/SA → PM → RD/DQA → TE/QA → PE/PUR/PC/MC → MFG/QC/FAE/CS）與產品終止換代。",
+            "en": "Six NPD stages and their gates, with the cross-functional relay from marketing through PM, R&D, test, process and manufacturing, ending at EOL."
+          },
+          "url": "https://lolopodcast.github.io/AI-Workshop-Hub/docs/NPD_Stage-Gate-Model_Coggle_SML_20240312.pdf",
+          "tags": [
+            "material",
+            "teacher",
+            "student"
           ]
         },
         {

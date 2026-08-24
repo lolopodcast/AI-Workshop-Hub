@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.1.0",
-    "updated": "2026-08-23",
+    "updated": "2026-08-24",
     "site": {
       "title": {
         "zh": "AI 教學資源總入口",
@@ -1165,6 +1165,42 @@
             "en": "Six NPD stages and their gates, with the cross-functional relay from marketing through PM, R&D, test, process and manufacturing, ending at EOL."
           },
           "url": "https://lolopodcast.github.io/AI-Workshop-Hub/docs/NPD_Stage-Gate-Model_Coggle_SML_20240312.pdf",
+          "tags": [
+            "material",
+            "teacher",
+            "student"
+          ]
+        },
+        {
+          "id": "new-item-10",
+          "published": true,
+          "title": {
+            "zh": "具高執行績效的專案管理實務（1/2）· 規劃",
+            "en": "High-Performance Project Management (1 of 2) — Planning"
+          },
+          "desc": {
+            "zh": "專案與日常營運的分野、生命週期五階段與三種模型，以及範疇／時程／成本／品質／資源五大管理領域；含 WBS、甘特圖與關鍵路徑法 CPM。",
+            "en": "What separates a project from operations, the five life-cycle phases and three delivery models, and the scope, schedule, cost, quality and resource disciplines — including WBS, Gantt charts and the critical path method."
+          },
+          "url": "https://lolopodcast.github.io/AI-Workshop-Hub/docs/High-Performance-Project-Management_Part1-of-2_EDP_SML_20250318.pdf",
+          "tags": [
+            "material",
+            "student",
+            "teacher"
+          ]
+        },
+        {
+          "id": "new-item-11",
+          "published": true,
+          "title": {
+            "zh": "具高執行績效的專案管理實務（2/2）· 控制與交付",
+            "en": "High-Performance Project Management (2 of 2) — Control & Delivery"
+          },
+          "desc": {
+            "zh": "風險管理五步流程、識別與評估方法、規避／轉移／減輕／接受四項應對策略；問題分析工具、瀑布與敏捷與混合三法比較、Scrum；以及績效評估、實獲值管理 EVM 與專案後檢討。",
+            "en": "The five-step risk process, identification and assessment techniques, and the avoid / transfer / mitigate / accept responses; problem-analysis tools, waterfall versus agile versus hybrid, Scrum; then performance review, earned value management and the project retrospective."
+          },
+          "url": "https://lolopodcast.github.io/AI-Workshop-Hub/docs/High-Performance-Project-Management_Part2-of-2_EDP_SML_20250318.pdf",
           "tags": [
             "material",
             "teacher",
